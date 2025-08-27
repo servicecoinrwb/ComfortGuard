@@ -414,6 +414,18 @@
             padding: 40px 0;
             text-align: center;
         }
+        .footer-links {
+            margin-top: 10px;
+        }
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
 
         /* --- STYLES FOR CONTRACTOR PAGE --- */
 
@@ -566,6 +578,51 @@
         }
         .submit-button:hover {
             box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Terms of Service Page */
+        .tos-page {
+            padding: 80px 0;
+        }
+        .tos-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .tos-content h1, .tos-content h2, .tos-content h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .tos-content h1 { font-size: 2.2rem; }
+        .tos-content h2 { font-size: 1.8rem; border-bottom: 2px solid #e1e5e9; padding-bottom: 5px;}
+        .tos-content h3 { font-size: 1.4rem; }
+        .tos-content p, .tos-content li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        .tos-content ul {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .back-button:hover {
+            background: #34495e;
         }
 
         /* Responsive */
@@ -744,6 +801,9 @@
         <footer class="footer">
             <div class="container">
                 <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
+                <div class="footer-links">
+                    <a class="show-tos-page">Terms of Service</a>
+                </div>
             </div>
         </footer>
     </div>
@@ -894,31 +954,118 @@
         <footer class="footer">
             <div class="container">
                 <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
+                 <div class="footer-links">
+                    <a class="show-tos-page">Terms of Service</a>
+                </div>
             </div>
         </footer>
     </div>
+
+    <!-- =============================================================== -->
+    <!-- ============= TERMS OF SERVICE PAGE CONTENT =================== -->
+    <!-- =============================================================== -->
+    <div id="tos-page" class="hidden">
+        <section class="tos-page">
+            <div class="container">
+                <div class="tos-content">
+                    <h1>ComfortGuard HVAC Membership Terms of Service</h1>
+                    <p>Effective Date: August 27, 2025 | Last Modified: August 27, 2025 | Version: 1.0</p>
+
+                    <h2>1. Initial Equipment Assessment & Right to Refuse Service</h2>
+                    <h3>30-Day Evaluation Period</h3>
+                    <p>A mandatory equipment inspection will be scheduled within 30 days of membership enrollment. ComfortGuard reserves the right to cancel membership with a full refund if the equipment is found to pose immediate safety hazards, is beyond economical repair (repair costs exceed 60% of replacement value), exceeds 20 years of age (subject to case-by-case evaluation), has been improperly maintained creating excessive liability risk, or contains code violations or unsafe modifications.</p>
+                    <h3>Equipment Disqualification Criteria</h3>
+                    <ul>
+                        <li>Cracked heat exchangers or other combustion safety issues.</li>
+                        <li>Major refrigerant leaks (defined as >1 lb/year).</li>
+                        <li>Electrical systems not meeting current local safety codes.</li>
+                        <li>Ductwork with leakage greater than 40%.</li>
+                        <li>Systems with unauthorized or "jury-rigged" modifications.</li>
+                    </ul>
+
+                    <h2>2. Safety Requirements & Exclusions</h2>
+                    <h3>Carbon Monoxide & Combustion Safety</h3>
+                    <p>Cracked heat exchangers automatically disqualify equipment. Gas leaks must be repaired before coverage begins. The customer is responsible for installing and maintaining CO detectors. ComfortGuard is not liable for any damages related to CO.</p>
+                    
+                    <h2>3. Coverage Inclusions & Limitations</h2>
+                    <h3>Included Basic Parts (per visit maximum $200)</h3>
+                    <ul>
+                        <li>Air filters and belts</li>
+                        <li>Contactors and capacitors</li>
+                        <li>Thermostats and basic controls</li>
+                    </ul>
+                    <h3>Major Component Coverage</h3>
+                    <ul>
+                        <li>Compressors: Customer pays 50% of replacement cost.</li>
+                        <li>Motors/Blowers: Covered if under 10 years old.</li>
+                    </ul>
+
+                    <h2>4. Exclusions & Non-Covered Items</h2>
+                    <h3>Never Covered</h3>
+                    <p>Heat exchanger replacement, ductwork replacement, electrical panel work, code compliance upgrades, environmental contamination cleanup, and consequential damages (e.g., water, mold) are not covered. Commercial or rental property systems are excluded.</p>
+                    
+                    <h2>5. Parts & Labor Warranty</h2>
+                    <p>We provide a 90-day warranty on ComfortGuard-supplied parts and a 30-day labor warranty on installation. Major components have specific warranties (e.g., 1-year parts on compressors). The warranty is void if the system is modified by non-network technicians.</p>
+
+                    <h2>6. Professional Standards & Responsibilities</h2>
+                    <p>ComfortGuard uses only licensed and insured contractors. Customers are responsible for providing system access and responding to safety recommendations promptly.</p>
+
+                    <h2>7. Service Call & Emergency Protocols</h2>
+                    <p>Members receive priority service, including a 4-hour response time for emergencies (no heat below 40°F, no cooling above 85°F) and next-business-day scheduling for routine service.</p>
+
+                    <h2>8. Membership Cancellation & Termination</h2>
+                    <p>Customers may cancel with 30-day written notice. ComfortGuard reserves the right to cancel memberships for reasons including unsafe equipment conditions or non-payment.</p>
+
+                    <h2>9. Liability & Dispute Resolution</h2>
+                    <p>ComfortGuard's liability is limited to the membership fees paid in the current year. Disputes will be handled through good faith negotiation, followed by binding arbitration for claims over $500.</p>
+
+                    <h2>10. Terms & Modifications</h2>
+                    <p>This is a month-to-month membership. ComfortGuard may modify terms with a 60-day notice. Continued service constitutes acceptance of modified terms. This agreement is governed by the laws of the state of Michigan.</p>
+
+                    <button id="back-to-site" class="back-button">← Go Back</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
 
     <script>
         // Get the page containers and the navigation buttons
         const customerPage = document.getElementById('customer-page');
         const contractorPage = document.getElementById('contractor-page');
+        const tosPage = document.getElementById('tos-page');
         
         const showContractorBtn = document.getElementById('show-contractor-page');
         const showCustomerBtn = document.getElementById('show-customer-page');
+        const showTosBtns = document.querySelectorAll('.show-tos-page');
+        const backToSiteBtn = document.getElementById('back-to-site');
 
-        // Event listener to show the contractor page
-        showContractorBtn.addEventListener('click', () => {
+        let lastActivePage = customerPage; // Keep track of the last viewed page
+
+        // --- Page Switching Logic ---
+        function showPage(pageToShow) {
+            // First, determine which page is currently active
+            if (!customerPage.classList.contains('hidden')) {
+                lastActivePage = customerPage;
+            } else if (!contractorPage.classList.contains('hidden')) {
+                lastActivePage = contractorPage;
+            }
+
+            // Hide all pages
             customerPage.classList.add('hidden');
-            contractorPage.classList.remove('hidden');
-            window.scrollTo(0, 0); // Scroll to top of page
-        });
-
-        // Event listener to show the customer page
-        showCustomerBtn.addEventListener('click', () => {
             contractorPage.classList.add('hidden');
-            customerPage.classList.remove('hidden');
-            window.scrollTo(0, 0); // Scroll to top of page
-        });
+            tosPage.classList.add('hidden');
+
+            // Show the requested page
+            pageToShow.classList.remove('hidden');
+            window.scrollTo(0, 0); // Scroll to top
+        }
+
+        showContractorBtn.addEventListener('click', () => showPage(contractorPage));
+        showCustomerBtn.addEventListener('click', () => showPage(customerPage));
+        showTosBtns.forEach(btn => btn.addEventListener('click', () => showPage(tosPage)));
+        backToSiteBtn.addEventListener('click', () => showPage(lastActivePage));
+
 
         // --- Form Handlers ---
         document.getElementById('membershipForm').addEventListener('submit', function(e) {
