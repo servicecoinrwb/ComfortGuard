@@ -34,10 +34,26 @@
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 60px 0;
+            padding: 20px 0 60px; /* Adjusted padding */
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
         }
         
         .header::before {
@@ -54,6 +70,7 @@
         .header-content {
             position: relative;
             z-index: 1;
+            padding-top: 20px; /* Add padding to separate from nav */
         }
         
         .header h1 {
@@ -67,13 +84,6 @@
             font-size: 1.4rem;
             margin-bottom: 25px;
             opacity: 0.95;
-        }
-
-        .contractor-link-container {
-            text-align: right;
-            padding: 0 20px 20px;
-            position: relative;
-            z-index: 10;
         }
 
         .nav-link {
@@ -581,6 +591,10 @@
                 grid-template-columns: 1fr;
                 gap: 0;
             }
+             .header-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -592,11 +606,12 @@
     <div id="customer-page">
         <section class="header">
             <div class="container">
-                <div class="contractor-link-container">
-                     <button id="show-contractor-page" class="nav-link">
+                <nav class="header-nav">
+                    <a href="#" class="logo">ComfortGuard</a>
+                    <button id="show-contractor-page" class="nav-link">
                         HVAC Contractor? Join Our Network →
                     </button>
-                </div>
+                </nav>
                 
                 <div class="header-content fade-in">
                     <h1>Never Worry About HVAC Repairs Again</h1>
@@ -739,11 +754,12 @@
     <div id="contractor-page" class="hidden">
         <section class="header contractor-header">
             <div class="container">
-                 <div class="contractor-link-container">
-                     <button id="show-customer-page" class="nav-link">
+                 <nav class="header-nav">
+                    <a href="#" class="logo">ComfortGuard</a>
+                    <button id="show-customer-page" class="nav-link">
                         Looking for HVAC Service? Click Here →
                     </button>
-                </div>
+                </nav>
                 <div class="header-content">
                     <h1>Get More HVAC Jobs</h1>
                     <p class="subtitle">Join our contractor network and receive qualified leads in your service area</p>
