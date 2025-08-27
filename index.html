@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComfortGuard HVAC Services</title>
+    <!-- Stripe.js Library -->
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         /* Global Styles */
         * {
@@ -579,6 +581,13 @@
         .submit-button:hover {
             box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
         }
+        .form-confirmation {
+            text-align: center;
+            padding: 40px 20px;
+            background: #27ae60;
+            color: white;
+            border-radius: 15px;
+        }
         
         /* Legal Pages (TOS & Agreement) */
         .legal-page {
@@ -791,7 +800,15 @@
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        <button type="submit" class="cta-button">Start My Membership - $55/Month</button>
+                         <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Service Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <button type="submit" class="cta-button">Proceed to Payment - $55/Month</button>
                     </form>
                     <p class="guarantee">30-day money-back guarantee • Cancel anytime</p>
                 </div>
@@ -929,24 +946,30 @@
             <div class="container">
                 <h2 class="section-title" style="color: white;">Become a Partner Today</h2>
                 <div class="signup-form contractor-signup-form">
-                    <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.5rem;">Contractor Application</h3>
-                    <form id="contractorForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="companyName">Company Name</label>
-                                <input type="text" id="companyName" name="companyName" required>
+                    <div id="contractor-form-container">
+                        <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.5rem;">Contractor Application</h3>
+                        <form id="contractorForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="companyName">Company Name</label>
+                                    <input type="text" id="companyName" name="companyName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactName">Contact Name</label>
+                                    <input type="text" id="contactName" name="contactName" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="contactName">Contact Name</label>
-                                <input type="text" id="contactName" name="contactName" required>
+                             <div class="form-group full-width">
+                                <label for="contractorEmail">Email Address</label>
+                                <input type="email" id="contractorEmail" name="contractorEmail" required>
                             </div>
-                        </div>
-                         <div class="form-group full-width">
-                            <label for="contractorEmail">Email Address</label>
-                            <input type="email" id="contractorEmail" name="contractorEmail" required>
-                        </div>
-                        <button type="submit" class="submit-button">Submit Application</button>
-                    </form>
+                            <button type="submit" class="submit-button">Submit Application</button>
+                        </form>
+                    </div>
+                    <div id="contractor-confirmation" class="form-confirmation hidden">
+                        <h3>Thank You!</h3>
+                        <p>Your application has been received. We will review it and contact you within 3-5 business days.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1105,17 +1128,50 @@
         backButtons.forEach(btn => btn.addEventListener('click', () => showPage(lastActivePage)));
 
 
-        // --- Form Handlers ---
-        document.getElementById('membershipForm').addEventListener('submit', function(e) {
+        // --- Stripe Checkout ---
+        const membershipForm = document.getElementById('membershipForm');
+        membershipForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! We will contact you shortly.');
-            this.reset();
+            
+            // --- IMPORTANT ---
+            // This is a TEST publishable key. Replace with your own live key.
+            const stripe = Stripe('pk_test_51Ncv8aLdDR2f3Y9qZ5J5f7b8g9h0k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7A8B9C0D1E2F');
+            
+            // This is a TEST Price ID for a $55/month subscription. 
+            // Create a product and price in your Stripe Dashboard and replace this ID.
+            const priceId = 'price_1NcvL4LdDR2f3Y9q1a2b3c4d';
+
+            stripe.redirectToCheckout({
+                lineItems: [{ price: priceId, quantity: 1 }],
+                mode: 'subscription',
+                // IMPORTANT: Replace these with your actual website URLs
+                successUrl: window.location.href,
+                cancelUrl: window.location.href,
+                customerEmail: document.getElementById('email').value
+            }).then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
         });
 
+
+        // --- Contractor Form Handler ---
+        const contractorFormContainer = document.getElementById('contractor-form-container');
+        const contractorConfirmation = document.getElementById('contractor-confirmation');
         document.getElementById('contractorForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your application! We will review it and be in touch.');
-            this.reset();
+            
+            // Here you would typically send the form data to your server
+            const formData = new FormData(this);
+            console.log('Contractor Application Submitted:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
+            // Show confirmation message
+            contractorFormContainer.classList.add('hidden');
+            contractorConfirmation.classList.remove('hidden');
         });
 
         // --- FAQ Accordion Handler ---
