@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfortGuard HVAC Membership - Just $30/Month</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="20%" stop-color="%23ffffff" stop-opacity=".1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="50" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+        
+        .price-badge {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+        
+        .price-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
+        }
+        
+        .feature-item::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .signup-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 40px auto 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        .guarantee {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* Trust Indicators */
+        .trust-indicators {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .trust-badge {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .price-badge {
+                font-size: 1.4rem;
+                padding: 10px 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .signup-form {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+        }
+        
+        /* Contractor Link */
+        .contractor-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .contractor-link a:hover {
+            background: rgba(255,255,255,0.3) !important;
+            transform: translateY(-1px);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section class="header">
+        <div class="container">
+            <!-- Contractor Link -->
+            <div style="text-align: right; padding: 20px 0;">
+                <a href="#" id="contractorLink" style="color: #fff; text-decoration: none; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 25px; font-size: 0.9rem; transition: background 0.3s ease;">
+                    HVAC Contractor? Join Our Network →
+                </a>
+            </div>
+            
+            <div class="header-content fade-in">
+                <h1>Never Worry About HVAC Repairs Again</h1>
+                <p class="subtitle">Premium HVAC maintenance & basic parts coverage for your home</p>
+                <div class="price-badge">Only $30/Month</div>
+                <p>Save hundreds on unexpected repairs • Priority service • Peace of mind</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">What's Included in Your Membership</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3>Basic Parts Covered</h3>
+                    <p>Filters, belts, contactors, capacitors, and other essential components included at no extra cost</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Priority Service</h3>
+                    <p>Jump to the front of the line with same-day or next-day service appointments</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>2X Annual Maintenance</h3>
+                    <p>Spring and fall tune-ups to keep your system running efficiently all year long</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Labor Discounts</h3>
+                    <p>15% off all repair labor costs and 10% off major system replacements</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3>24/7 Emergency Line</h3>
+                    <p>Direct access to our emergency hotline for urgent HVAC issues</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h3>Detailed Reports</h3>
+                    <p>Complete system health reports after every service visit with recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Keep Your Home Comfortable</h2>
+            <div class="features-list">
+                <div class="feature-item">Professional system cleaning</div>
+                <div class="feature-item">Thermostat calibration</div>
+                <div class="feature-item">Refrigerant level check</div>
+                <div class="feature-item">Electrical connection inspection</div>
+                <div class="feature-item">Ductwork examination</div>
+                <div class="feature-item">Energy efficiency optimization</div>
+                <div class="feature-item">Indoor air quality assessment</div>
+                <div class="feature-item">System performance testing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Start Saving Today</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 0;">Join thousands of homeowners who never worry about HVAC costs</p>
+            
+            <div class="signup-form">
+                <h3 style="color: #333; margin-bottom: 25px; font-size: 1.5rem;">Get Started Now</h3>
+                <form id="membershipForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Home Address</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <button type="submit" class="cta-button">Start My Membership - $30/Month</button>
+                </form>
+                <p class="guarantee">30-day money-back guarantee • Cancel anytime • No hidden fees</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Members Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"My AC died in July and they had a tech out the same day. The basic parts were covered and I only paid for labor. Saved me over $400!"</p>
+                    <p class="testimonial-author">— Sarah Martinez, Homeowner</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The bi-annual maintenance has kept our 12-year-old system running like new. Best $30 I spend every month."</p>
+                    <p class="testimonial-author">— Mike Thompson, Homeowner</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Professional service, fair pricing, and I love having priority scheduling. Never wait more than 24 hours for service."</p>
+                    <p class="testimonial-author">— Jennifer Liu, Homeowner</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-indicators">
+        <div class="container">
+            <h3>Trusted by Local Homeowners</h3>
+            <div class="trust-badges">
+                <div class="trust-badge">Licensed & Insured</div>
+                <div class="trust-badge">BBB A+ Rated</div>
+                <div class="trust-badge">24/7 Support</div>
+                <div class="trust-badge">5+ Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Call us: (555) 123-HVAC | Email: info@comfortguardhvac.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('membershipForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message (replace with actual form handling)
+            alert('Thank you for your interest! We\'ll contact you within 24 hours to set up your membership and schedule your first maintenance visit.');
+            
+            // Here you would typically send the data to your server
+            console.log('Form submitted with data:', data);
+        });
+
+        // Contractor link handler
+        document.getElementById('contractorLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would navigate to your contractor signup page
+            alert('Redirecting to contractor signup page...');
+            // window.location.href = '/contractor-signup'; // Uncomment for real redirect
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe benefit cards and other elements
+        document.querySelectorAll('.benefit-card, .testimonial, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
