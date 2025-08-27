@@ -580,11 +580,11 @@
             box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
         }
         
-        /* Terms of Service Page */
-        .tos-page {
+        /* Legal Pages (TOS & Agreement) */
+        .legal-page {
             padding: 80px 0;
         }
-        .tos-content {
+        .legal-content {
             background: white;
             padding: 40px;
             border-radius: 15px;
@@ -592,19 +592,19 @@
             max-width: 900px;
             margin: 0 auto;
         }
-        .tos-content h1, .tos-content h2, .tos-content h3 {
+        .legal-content h1, .legal-content h2, .legal-content h3 {
             color: #2c3e50;
             margin-top: 20px;
             margin-bottom: 15px;
         }
-        .tos-content h1 { font-size: 2.2rem; }
-        .tos-content h2 { font-size: 1.8rem; border-bottom: 2px solid #e1e5e9; padding-bottom: 5px;}
-        .tos-content h3 { font-size: 1.4rem; }
-        .tos-content p, .tos-content li {
+        .legal-content h1 { font-size: 2.2rem; }
+        .legal-content h2 { font-size: 1.8rem; border-bottom: 2px solid #e1e5e9; padding-bottom: 5px;}
+        .legal-content h3 { font-size: 1.4rem; }
+        .legal-content p, .legal-content li {
             margin-bottom: 10px;
             line-height: 1.8;
         }
-        .tos-content ul {
+        .legal-content ul {
             list-style-position: inside;
             padding-left: 20px;
         }
@@ -956,6 +956,7 @@
                 <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
                  <div class="footer-links">
                     <a class="show-tos-page">Terms of Service</a>
+                    <a class="show-agreement-page">Contractor Agreement</a>
                 </div>
             </div>
         </footer>
@@ -965,9 +966,9 @@
     <!-- ============= TERMS OF SERVICE PAGE CONTENT =================== -->
     <!-- =============================================================== -->
     <div id="tos-page" class="hidden">
-        <section class="tos-page">
+        <section class="legal-page">
             <div class="container">
-                <div class="tos-content">
+                <div class="legal-content">
                     <h1>ComfortGuard HVAC Membership Terms of Service</h1>
                     <p>Effective Date: August 27, 2025 | Last Modified: August 27, 2025 | Version: 1.0</p>
 
@@ -1006,23 +1007,52 @@
                     
                     <h2>5. Parts & Labor Warranty</h2>
                     <p>We provide a 90-day warranty on ComfortGuard-supplied parts and a 30-day labor warranty on installation. Major components have specific warranties (e.g., 1-year parts on compressors). The warranty is void if the system is modified by non-network technicians.</p>
+                    
+                    <button class="back-button">← Go Back</button>
+                </div>
+            </div>
+        </section>
+    </div>
 
-                    <h2>6. Professional Standards & Responsibilities</h2>
-                    <p>ComfortGuard uses only licensed and insured contractors. Customers are responsible for providing system access and responding to safety recommendations promptly.</p>
+    <!-- =============================================================== -->
+    <!-- ============ CONTRACTOR AGREEMENT PAGE CONTENT ================ -->
+    <!-- =============================================================== -->
+    <div id="agreement-page" class="hidden">
+        <section class="legal-page">
+            <div class="container">
+                <div class="legal-content">
+                    <h1>ComfortGuard Contractor Network Agreement</h1>
+                    <p>Effective Date: August 27, 2025 | Version: 1.0</p>
 
-                    <h2>7. Service Call & Emergency Protocols</h2>
-                    <p>Members receive priority service, including a 4-hour response time for emergencies (no heat below 40°F, no cooling above 85°F) and next-business-day scheduling for routine service.</p>
+                    <h2>1. Agreement Overview</h2>
+                    <h3>Relationship Type</h3>
+                    <p>Contractor operates as an independent business, not an employee of ComfortGuard. Participation in the network is voluntary. This is a month-to-month agreement with a 30-day termination notice by either party.</p>
 
-                    <h2>8. Membership Cancellation & Termination</h2>
-                    <p>Customers may cancel with 30-day written notice. ComfortGuard reserves the right to cancel memberships for reasons including unsafe equipment conditions or non-payment.</p>
+                    <h2>2. Payment Terms & Compensation</h2>
+                    <h3>Payment Structure</h3>
+                    <p>ComfortGuard pays the Contractor standard market rates per service call, with premium rates for emergencies. Payments are made Net 15 days from the submission of a complete invoice.</p>
+                    <h3>Invoicing Requirements</h3>
+                    <p>Invoices must be submitted within 48 hours of service completion and include the work order number, member information, services performed, parts used, and photo documentation.</p>
 
-                    <h2>9. Liability & Dispute Resolution</h2>
-                    <p>ComfortGuard's liability is limited to the membership fees paid in the current year. Disputes will be handled through good faith negotiation, followed by binding arbitration for claims over $500.</p>
+                    <h2>3. Service Standards & Performance Requirements</h2>
+                    <h3>Response Time Standards</h3>
+                    <p>A 4-hour maximum response time for emergencies and same or next-day service for priority calls is required. All work must meet local codes and manufacturer specifications.</p>
+                    <h3>Customer Service Requirements</h3>
+                    <p>A professional appearance, respectful communication, and a clean work area are required at all times.</p>
 
-                    <h2>10. Terms & Modifications</h2>
-                    <p>This is a month-to-month membership. ComfortGuard may modify terms with a 60-day notice. Continued service constitutes acceptance of modified terms. This agreement is governed by the laws of the state of Michigan.</p>
+                    <h2>4. Contractor Requirements & Qualifications</h2>
+                    <h3>Licensing & Certification</h3>
+                    <p>Contractors must maintain a valid state HVAC license, EPA Universal Certification, and carry a minimum of $1M in general liability insurance.</p>
+                    <h3>Background & Safety</h3>
+                    <p>All technicians must pass a background check and comply with our drug testing program.</p>
 
-                    <button id="back-to-site" class="back-button">← Go Back</button>
+                    <h2>5. Termination Conditions</h2>
+                    <p>ComfortGuard may terminate this agreement immediately for safety violations, customer complaints, or lapse in insurance coverage. The Contractor may terminate with a 30-day notice.</p>
+
+                    <h2>6. Dispute Resolution & Legal Terms</h2>
+                    <p>Disputes will be handled through good faith negotiation, followed by mediation. This agreement is governed by the laws of the state of Michigan.</p>
+
+                    <button class="back-button">← Go Back</button>
                 </div>
             </div>
         </section>
@@ -1034,11 +1064,13 @@
         const customerPage = document.getElementById('customer-page');
         const contractorPage = document.getElementById('contractor-page');
         const tosPage = document.getElementById('tos-page');
+        const agreementPage = document.getElementById('agreement-page');
         
         const showContractorBtn = document.getElementById('show-contractor-page');
         const showCustomerBtn = document.getElementById('show-customer-page');
         const showTosBtns = document.querySelectorAll('.show-tos-page');
-        const backToSiteBtn = document.getElementById('back-to-site');
+        const showAgreementBtns = document.querySelectorAll('.show-agreement-page');
+        const backButtons = document.querySelectorAll('.back-button');
 
         let lastActivePage = customerPage; // Keep track of the last viewed page
 
@@ -1055,6 +1087,7 @@
             customerPage.classList.add('hidden');
             contractorPage.classList.add('hidden');
             tosPage.classList.add('hidden');
+            agreementPage.classList.add('hidden');
 
             // Show the requested page
             pageToShow.classList.remove('hidden');
@@ -1064,7 +1097,8 @@
         showContractorBtn.addEventListener('click', () => showPage(contractorPage));
         showCustomerBtn.addEventListener('click', () => showPage(customerPage));
         showTosBtns.forEach(btn => btn.addEventListener('click', () => showPage(tosPage)));
-        backToSiteBtn.addEventListener('click', () => showPage(lastActivePage));
+        showAgreementBtns.forEach(btn => btn.addEventListener('click', () => showPage(agreementPage)));
+        backButtons.forEach(btn => btn.addEventListener('click', () => showPage(lastActivePage)));
 
 
         // --- Form Handlers ---
