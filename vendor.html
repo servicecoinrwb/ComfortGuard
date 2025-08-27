@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join ComfortGuard Contractor Network - HVAC Job Opportunities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="20%" stop-color="%23ffffff" stop-opacity=".05"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="50" cy="10" r="10"/></svg>') repeat;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .header .highlight {
+            background: #e74c3c;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 25px;
+        }
+        
+        .step-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .step-card p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Earnings Section */
+        .earnings {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .earnings h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+        }
+        
+        .earnings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .earning-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .earning-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .earning-description {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        /* Coverage Areas */
+        .coverage-areas {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .area-item {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 3px solid #3498db;
+        }
+        
+        .area-item h4 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .area-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Requirements */
+        .requirements {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .req-category {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 15px;
+            border-top: 4px solid #e74c3c;
+        }
+        
+        .req-category h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        
+        .req-list {
+            list-style: none;
+        }
+        
+        .req-list li {
+            padding: 10px 0;
+            font-size: 1rem;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .req-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        /* Signup Form */
+        .signup-section {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .signup-form {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 40px auto 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            color: #333;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            transform: scale(1.2);
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            font-weight: normal;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #3498db;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+            padding-left: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .testimonial-location {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .signup-form {
+                margin: 20px;
+                padding: 30px 25px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .footer-content {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Get More HVAC Jobs</h1>
+                <p class="subtitle">Join our contractor network and receive qualified leads in your service area</p>
+                <div class="highlight">Steady Work • Quality Leads • Fast Payment</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Our Network Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up as Vendor</h3>
+                    <p>Complete our simple application and verification process. Tell us your service areas and specialties.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Job Notifications</h3>
+                    <p>Receive text/email alerts for jobs in your area. View job details and customer information instantly.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Accept & Complete Work</h3>
+                    <p>Accept jobs that fit your schedule. Complete the service and submit invoices through our platform.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Get Paid Fast</h3>
+                    <p>Receive payment within 7-14 days via direct deposit. No chasing customers for payment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Join Our Contractor Network?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Pre-Qualified Leads</h3>
+                    <p>All customers are verified members paying $30/month. No cold calls or door knocking - just quality leads.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Guaranteed Payment</h3>
+                    <p>We handle all billing and collections. You get paid on time, every time. No more chasing invoices.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📍</div>
+                    <h3>Choose Your Area</h3>
+                    <p>Work in your preferred service radius. Accept jobs that make sense for your business and schedule.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Priority Customers</h3>
+                    <p>Serve members who value quality HVAC service and are willing to pay for professional work.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Business Growth</h3>
+                    <p>Build your customer base with satisfied members who may need additional services outside the membership.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Support & Backup</h3>
+                    <p>Customer service handled by us. Focus on the technical work while we manage customer relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earnings -->
+    <section class="earnings">
+        <div class="container">
+            <h2>Earning Potential</h2>
+            <p style="font-size: 1.3rem; opacity: 0.95;">Competitive rates for quality contractors</p>
+            
+            <div class="earnings-grid">
+                <div class="earning-item">
+                    <div class="earning-amount">$95-150</div>
+                    <p class="earning-description">Standard Service Call<br>(Diagnostic + Basic Repair)</p>
+                </div>
+                <div class="earning-item">
+                    <div class="earning-amount">$65-85</div>
+                    <p class="earning-description">Maintenance Visit<br>(Tune-up & Inspection)</p>
+                </div>
+                <div class="earning-item">
+                    <div class="earning-amount">$200-500+</div>
+                    <p class="earning-description">Major Repairs<br>(Component Replacement)</p>
+                </div>
+                <div class="earning-item">
+                    <div class="earning-amount">$2500-8000+</div>
+                    <p class="earning-description">System Installation<br>(New Unit Install)</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 1.1rem;">Plus: Member often needs additional work beyond basic membership coverage</p>
+        </div>
+    </section>
+
+    <!-- Coverage Areas -->
+    <section class="coverage-areas">
+        <div class="container">
+            <h2 class="section-title">Current Coverage Areas</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666;">We're actively recruiting contractors in these markets</p>
+            
+            <div class="areas-grid">
+                <div class="area-item">
+                    <h4>Metro Detroit</h4>
+                    <p>High demand area</p>
+                </div>
+                <div class="area-item">
+                    <h4>Grand Rapids</h4>
+                    <p>Expanding market</p>
+                </div>
+                <div class="area-item">
+                    <h4>Lansing</h4>
+                    <p>New territory</p>
+                </div>
+                <div class="area-item">
+                    <h4>Kalamazoo</h4>
+                    <p>Growing membership</p>
+                </div>
+                <div class="area-item">
+                    <h4>Ann Arbor</h4>
+                    <p>Premium market</p>
+                </div>
+                <div class="area-item">
+                    <h4>Flint</h4>
+                    <p>Opportunity zone</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #666;">
+                Don't see your area? Apply anyway - we're expanding rapidly!
+            </p>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="requirements">
+        <div class="container">
+            <h2 class="section-title">Contractor Requirements</h2>
+            
+            <div class="req-grid">
+                <div class="req-category">
+                    <h3>Essential Requirements</h3>
+                    <ul class="req-list">
+                        <li>Valid HVAC contractor license</li>
+                        <li>General liability insurance ($1M min)</li>
+                        <li>EPA Universal certification</li>
+                        <li>3+ years residential HVAC experience</li>
+                        <li>Own truck and professional tools</li>
+                        <li>Professional appearance and uniforms</li>
+                        <li>Smartphone for job notifications</li>
+                    </ul>
+                </div>
+                
+                <div class="req-category">
+                    <h3>Preferred Qualifications</h3>
+                    <ul class="req-list">
+                        <li>Manufacturer certifications</li>
+                        <li>Service company experience</li>
+                        <li>Customer service skills</li>
+                        <li>Bilingual capabilities</li>
+                        <li>Emergency/after-hours availability</li>
+                        <li>Electrical and plumbing knowledge</li>
+                        <li>Clean driving record</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Form -->
+    <section class="signup-section">
+        <div class="container">
+            <h2 style="font-size: 2.8rem; text-align: center; margin-bottom: 20px;">Join Our Network Today</h2>
+            <p style="font-size: 1.3rem; text-align: center; margin-bottom: 0;">Start receiving qualified HVAC leads in your service area</p>
+            
+            <div class="signup-form">
+                <h3 style="color: #333; margin-bottom: 30px; font-size: 1.8rem; text-align: center;">Contractor Application</h3>
+                
+                <form id="vendorForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactName">Primary Contact *</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="businessAddress">Business Address *</label>
+                        <input type="text" id="businessAddress" name="businessAddress" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="licenseNumber">HVAC License Number *</label>
+                            <input type="text" id="licenseNumber" name="licenseNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="insuranceCarrier">Insurance Carrier *</label>
+                            <input type="text" id="insuranceCarrier" name="insuranceCarrier" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="yearsExperience">Years in Business</label>
+                            <select id="yearsExperience" name="yearsExperience" required>
+                                <option value="">Select Range</option>
+                                <option value="1-2">1-2 Years</option>
+                                <option value="3-5">3-5 Years</option>
+                                <option value="6-10">6-10 Years</option>
+                                <option value="10+">10+ Years</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="teamSize">Team Size</label>
+                            <select id="teamSize" name="teamSize" required>
+                                <option value="">Select Size</option>
+                                <option value="1">Solo Contractor</option>
+                                <option value="2-3">2-3 Technicians</option>
+                                <option value="4-6">4-6 Technicians</option>
+                                <option value="7+">7+ Technicians</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="serviceAreas">Preferred Service Areas *</label>
+                        <textarea id="serviceAreas" name="serviceAreas" placeholder="List cities/zip codes where you'd like to receive jobs" required></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="specialties">Services You Provide *</label>
+                        <textarea id="specialties" name="specialties" placeholder="e.g., Residential HVAC repair, maintenance, installations, emergency service, etc." required></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="availability247" name="availability247">
+                        <label for="availability247">Available for emergency/after-hours calls</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="backgroundCheck" name="backgroundCheck">
+                        <label for="backgroundCheck">I consent to background check and license verification</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to ComfortGuard contractor terms, pricing structure, and payment policies. I understand this application doesn't guarantee acceptance into the network.</label>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Apply to Join Network</button>
+                </form>
+                
+                <p style="text-align: center; margin-top: 25px; color: #666; font-size: 0.95rem;">
+                    Applications reviewed within 2-3 business days. We'll contact qualified contractors for verification and onboarding.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Network Partners Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">Joined 6 months ago and it's been a game-changer. Steady stream of qualified customers who actually value quality work.</p>
+                    <p class="testimonial-author">Mike's HVAC Services</p>
+                    <p class="testimonial-location">Detroit, MI</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">No more chasing payments or dealing with price shoppers. ComfortGuard customers understand the value of professional service.</p>
+                    <p class="testimonial-author">TempControl Solutions</p>
+                    <p class="testimonial-location">Grand Rapids, MI</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">The job alerts system is perfect. I can pick jobs that fit my schedule and service area. Payment is always on time.</p>
+                    <p class="testimonial-author">Climate Care Pros</p>
+                    <p class="testimonial-location">Ann Arbor, MI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contractor Support</h4>
+                    <p>Phone: (555) 123-HVAC ext. 2</p>
+                    <p>Email: contractors@comfortguardhvac.com</p>
+                    <p>Support Hours: Mon-Fri 7AM-7PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#requirements">Requirements</a>
+                    <a href="#application">Apply Now</a>
+                    <a href="#coverage">Coverage Areas</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Network Partners</h4>
+                    <p>Join hundreds of contractors already earning with ComfortGuard's growing membership base.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid #34495e;">
+                <p>&copy; 2025 ComfortGuard HVAC Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('vendorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.terms) {
+                alert('Please accept the terms and conditions to continue.');
+                return;
+            }
+            
+            // Show success message
+            alert('Thank you for your application! We\'ll review your information and contact you within 2-3 business days if you qualify for our contractor network.');
+            
+            // Here you would send the data to your server
+            console.log('Vendor application submitted:', data);
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.step-card, .benefit-card, .testimonial, .earning-item, .area-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
