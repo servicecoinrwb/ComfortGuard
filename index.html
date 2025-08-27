@@ -165,37 +165,170 @@
             color: #666;
             font-size: 1.1rem;
         }
-        
-        /* Features Section */
-        .features {
+
+        /* Coverage Details Section */
+        .coverage-details {
             padding: 80px 0;
             background: white;
         }
-        
-        .features-list {
+        .coverage-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
             margin-top: 40px;
         }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            padding: 20px;
+        .coverage-column {
             background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 5px solid #28a745;
+            padding: 30px;
+            border-radius: 15px;
         }
-        
-        .feature-item::before {
+        .coverage-column h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e5e9;
+        }
+        .coverage-list {
+            list-style: none;
+        }
+        .coverage-list li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        .coverage-list li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .included li::before {
             content: '✓';
             color: #28a745;
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-right: 15px;
+        }
+        .discounted li::before {
+            content: '+';
+            color: #ff6b35;
         }
         
+        /* Service Area Checker */
+        .area-checker {
+            padding: 60px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        .area-checker-box {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .area-checker-box h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .zip-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .zip-input {
+            width: 60%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .zip-button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #2c3e50;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .zip-button:hover {
+            background: #34495e;
+        }
+        .zip-result {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            min-height: 25px;
+        }
+        .zip-result.success {
+            color: #28a745;
+        }
+        .zip-result.error {
+            color: #e74c3c;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #e1e5e9;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #e9ecef;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .faq-answer p {
+            padding: 0 30px 20px;
+        }
+
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -262,62 +395,6 @@
             margin-top: 20px;
             font-size: 0.9rem;
             opacity: 0.9;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        .testimonial {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: #555;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        /* Trust Indicators */
-        .trust-indicators {
-            padding: 60px 0;
-            background: white;
-            text-align: center;
-        }
-        
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        
-        .trust-badge {
-            padding: 15px 25px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            font-weight: 600;
-            color: #2c3e50;
         }
         
         /* Footer */
@@ -487,16 +564,77 @@
             </div>
         </section>
 
-        <section class="features">
+        <section class="coverage-details">
             <div class="container">
-                <h2 class="section-title">Everything You Need to Keep Your Home Comfortable</h2>
-                <div class="features-list">
-                    <div class="feature-item">Professional system cleaning</div>
-                    <div class="feature-item">Thermostat calibration</div>
-                    <div class="feature-item">Refrigerant level check</div>
-                    <div class="feature-item">Electrical connection inspection</div>
-                    <div class="feature-item">Ductwork examination</div>
-                    <div class="feature-item">Energy efficiency optimization</div>
+                <h2 class="section-title">Coverage Details</h2>
+                <div class="coverage-grid">
+                    <div class="coverage-column">
+                        <h3>Included Services & Parts</h3>
+                        <ul class="coverage-list included">
+                            <li>Two Annual Tune-Ups</li>
+                            <li>Standard Air Filters</li>
+                            <li>Fuses & Breakers</li>
+                            <li>Capacitors & Contactors</li>
+                            <li>Thermostat Calibration</li>
+                            <li>Condensate Line Cleaning</li>
+                        </ul>
+                    </div>
+                    <div class="coverage-column">
+                        <h3>Discounted Major Repairs</h3>
+                        <ul class="coverage-list discounted">
+                            <li>15% Off All Repair Labor</li>
+                            <li>10% Off Refrigerant</li>
+                            <li>10% Off Blower Motors</li>
+                            <li>10% Off Compressor Replacements</li>
+                            <li>10% Off Full System Replacements</li>
+                            <li>10% Off Ductwork Modifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What if I need a major repair not covered by the plan?
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our membership covers all basic parts and maintenance to prevent major issues. If a major component like a compressor or motor fails, members receive a 10% discount on the total cost of the replacement, ensuring you still get significant savings.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is there a long-term contract?
+                        </button>
+                        <div class="faq-answer">
+                            <p>No, there are no long-term contracts. Our membership is a simple month-to-month subscription. You can cancel at any time with no hidden fees or penalties. We also offer a 30-day money-back guarantee if you're not completely satisfied.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How quickly can I expect service?
+                        </button>
+                        <div class="faq-answer">
+                            <p>As a ComfortGuard member, you receive priority service. This means you jump to the front of the line. We guarantee a service appointment within 24 hours of your call, and often can provide same-day service for urgent issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="area-checker">
+            <div class="container">
+                <div class="area-checker-box">
+                    <h3>Check If We Serve Your Area</h3>
+                    <form id="zip-form" class="zip-form">
+                        <input type="text" id="zip-input" class="zip-input" placeholder="Enter Your ZIP Code" required>
+                        <button type="submit" class="zip-button">Check Availability</button>
+                    </form>
+                    <div id="zip-result" class="zip-result"></div>
                 </div>
             </div>
         </section>
@@ -654,20 +792,63 @@
             window.scrollTo(0, 0); // Scroll to top of page
         });
 
-        // --- Form Handlers (Optional, but good practice) ---
-        
-        // Handle customer membership form
+        // --- Form Handlers ---
         document.getElementById('membershipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your interest! We will contact you shortly.');
             this.reset();
         });
 
-        // Handle contractor application form
         document.getElementById('contractorForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you for your application! We will review it and be in touch.');
             this.reset();
+        });
+
+        // --- FAQ Accordion Handler ---
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                if (isActive) {
+                    question.classList.remove('active');
+                    answer.style.maxHeight = null;
+                } else {
+                    question.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
+            });
+        });
+
+        // --- Service Area Checker ---
+        const zipForm = document.getElementById('zip-form');
+        const zipInput = document.getElementById('zip-input');
+        const zipResult = document.getElementById('zip-result');
+        
+        // IMPORTANT: Add your serviceable ZIP codes to this list
+        const serviceableZips = ['48150', '48152', '48154', '48124', '48126'];
+
+        zipForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const enteredZip = zipInput.value.trim();
+            
+            zipResult.textContent = ''; // Clear previous result
+            zipResult.className = 'zip-result'; // Reset class
+
+            if (!/^\d{5}$/.test(enteredZip)) {
+                zipResult.textContent = 'Please enter a valid 5-digit ZIP code.';
+                zipResult.classList.add('error');
+                return;
+            }
+
+            if (serviceableZips.includes(enteredZip)) {
+                zipResult.textContent = 'Great! We serve your area.';
+                zipResult.classList.add('success');
+            } else {
+                zipResult.textContent = "Sorry, we don't cover that area yet.";
+                zipResult.classList.add('error');
+            }
         });
     </script>
 </body>
