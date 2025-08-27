@@ -416,7 +416,7 @@
             box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
         }
 
-        .how-it-works, .coverage-areas, .testimonials {
+        .how-it-works, .coverage-areas, .testimonials, .requirements-section {
             background: #f8f9fa;
         }
 
@@ -458,6 +458,67 @@
             font-size: 1.6rem;
         }
 
+        /* Earnings Calculator */
+        .earnings-calculator {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        .calculator-box {
+            background: #f8f9fa;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .calculator-box h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        .slider-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .earnings-slider {
+            width: 100%;
+            cursor: pointer;
+        }
+        .earnings-display {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+        .earnings-display span {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #666;
+            display: block;
+        }
+
+        /* Requirements Section */
+        .requirements-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .requirement-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
         .contractor-benefits .benefit-card {
              border-left: 5px solid #3498db;
         }
@@ -467,6 +528,11 @@
         .contractor-benefits .benefit-icon {
             font-size: 3rem;
             background: none;
+        }
+
+        .partner-testimonials {
+            background: white;
+            padding: 80px 0;
         }
 
         .signup-section {
@@ -714,6 +780,36 @@
             </div>
         </section>
 
+        <section class="earnings-calculator">
+            <div class="container">
+                <div class="calculator-box">
+                    <h3>Estimate Your Monthly Earnings</h3>
+                    <div class="slider-group">
+                        <label for="jobs-slider" class="slider-label" id="jobs-label">5 Jobs Per Week</label>
+                        <input type="range" min="1" max="20" value="5" class="earnings-slider" id="jobs-slider">
+                    </div>
+                    <div class="earnings-display" id="earnings-output">
+                        $2,165
+                        <span>Estimated Monthly Earnings</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="requirements-section">
+            <div class="container">
+                <h2 class="section-title">Our Requirements</h2>
+                <div class="requirements-list">
+                    <div class="requirement-item">Valid HVAC License</div>
+                    <div class="requirement-item">General Liability Insurance</div>
+                    <div class="requirement-item">Background Check</div>
+                    <div class="requirement-item">3+ Years of Experience</div>
+                    <div class="requirement-item">Own Tools & Vehicle</div>
+                    <div class="requirement-item">Commitment to Quality</div>
+                </div>
+            </div>
+        </section>
+
         <section class="benefits contractor-benefits">
             <div class="container">
                 <h2 class="section-title">Why Join Our Contractor Network?</h2>
@@ -732,6 +828,22 @@
                         <div class="benefit-icon">📍</div>
                         <h3>Choose Your Area</h3>
                         <p>Work in your preferred service radius. Accept jobs that make sense.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="partner-testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Partners Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Joining this network was the best decision for my business. I've filled my schedule and stopped wasting money on ads that don't work."</p>
+                        <p class="testimonial-author">— Tom B., Precision Air LLC</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The lead quality is fantastic. These are real customers who need work done now. The fast payments are a huge plus."</p>
+                        <p class="testimonial-author">— Maria G., Frosty Solutions</p>
                     </div>
                 </div>
             </div>
@@ -850,6 +962,26 @@
                 zipResult.classList.add('error');
             }
         });
+
+        // --- Earnings Calculator ---
+        const jobsSlider = document.getElementById('jobs-slider');
+        const jobsLabel = document.getElementById('jobs-label');
+        const earningsOutput = document.getElementById('earnings-output');
+        const avgValuePerJob = 100; // Set the average earning per job
+
+        function updateEarnings() {
+            const jobsPerWeek = jobsSlider.value;
+            const monthlyEarnings = jobsPerWeek * avgValuePerJob * 4.33; // 4.33 weeks in a month
+
+            jobsLabel.textContent = `${jobsPerWeek} Jobs Per Week`;
+            earningsOutput.innerHTML = `$${monthlyEarnings.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                                        <span>Estimated Monthly Earnings</span>`;
+        }
+
+        jobsSlider.addEventListener('input', updateEarnings);
+        // Initial calculation on page load
+        updateEarnings();
+
     </script>
 </body>
 </html>
