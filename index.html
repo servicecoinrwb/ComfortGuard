@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComfortGuard HVAC Services</title>
-    <!-- Stripe.js Library -->
+    <!-- Stripe.js Library is no longer strictly needed for this redirect method, but can be kept for future use -->
     <script src="https://js.stripe.com/v3/"></script>
     <style>
         /* Global Styles */
@@ -1129,30 +1129,17 @@
 
 
         // --- Stripe Checkout ---
-        const membershipForm = document.getElementById('membershipForm');
-        membershipForm.addEventListener('submit', function(e) {
+        document.getElementById('membershipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // --- IMPORTANT ---
-            // This is a TEST publishable key. Replace with your own live key.
-            const stripe = Stripe('pk_test_51Ncv8aLdDR2f3Y9qZ5J5f7b8g9h0k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7A8B9C0D1E2F');
+            // Collect form data for URL parameters
+            const formData = new FormData(this);
+            const email = encodeURIComponent(formData.get('email'));
+            const name = encodeURIComponent(formData.get('name'));
             
-            // This is a TEST Price ID for a $55/month subscription. 
-            // Create a product and price in your Stripe Dashboard and replace this ID.
-            const priceId = 'price_1NcvL4LdDR2f3Y9q1a2b3c4d';
-
-            stripe.redirectToCheckout({
-                lineItems: [{ price: priceId, quantity: 1 }],
-                mode: 'subscription',
-                // IMPORTANT: Replace these with your actual website URLs
-                successUrl: window.location.href,
-                cancelUrl: window.location.href,
-                customerEmail: document.getElementById('email').value
-            }).then(function (result) {
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            });
+            // Redirect to Stripe with pre-filled information
+            // IMPORTANT: Replace with your actual Stripe Payment Link URL
+            window.location.href = `https://buy.stripe.com/fZueVccuMciT7d2a580Fi01?prefilled_email=${email}&client_reference_id=${email}`;
         });
 
 
