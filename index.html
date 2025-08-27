@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComfortGuard HVAC Services</title>
-    <!-- Stripe.js Library is no longer strictly needed for this redirect method, but can be kept for future use -->
-    <script src="https://js.stripe.com/v3/"></script>
     <style>
         /* Global Styles */
         * {
@@ -18,6 +16,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
+            background: #f8f9fa; /* Base background for welcome page */
         }
         
         .container {
@@ -634,6 +633,56 @@
             background: #34495e;
         }
 
+        /* --- STYLES FOR WELCOME PAGE --- */
+        .welcome-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .welcome-header h1 { font-size: 2.8rem; }
+        .welcome-main-content {
+            background: white;
+            max-width: 800px;
+            margin: -30px auto 0;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #28a745;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+        .welcome-main-content h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .welcome-footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+        }
+        .welcome-footer a {
+            color: #667eea;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .welcome-footer a:hover {
+            text-decoration: underline;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
@@ -660,6 +709,11 @@
              .header-nav {
                 flex-direction: column;
                 gap: 15px;
+            }
+            .welcome-header h1 { font-size: 2.2rem; }
+            .welcome-main-content {
+                margin: -20px 20px 0;
+                padding: 30px 20px;
             }
         }
     </style>
@@ -1085,6 +1139,35 @@
         </section>
     </div>
 
+    <!-- =============================================================== -->
+    <!-- ================= WELCOME PAGE CONTENT ======================== -->
+    <!-- =============================================================== -->
+    <div id="welcome-page" class="hidden">
+        <section class="welcome-header">
+            <div class="container">
+                <h1>Welcome to ComfortGuard!</h1>
+            </div>
+        </section>
+        <div class="container">
+            <div class="welcome-main-content">
+                <div class="success-icon">✓</div>
+                <h2>Payment Successful!</h2>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">
+                    Your membership is now active. We'll contact you within 48 hours to schedule your initial equipment assessment.
+                </p>
+                <p>Questions? Call (555) 123-HVAC</p>
+            </div>
+        </div>
+        <div class="welcome-footer">
+            <div class="container">
+                <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
+                <p style="margin-top: 10px;">
+                    <a class="show-customer-page-link">Return to Home</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         // Get the page containers and the navigation buttons
@@ -1092,29 +1175,28 @@
         const contractorPage = document.getElementById('contractor-page');
         const tosPage = document.getElementById('tos-page');
         const agreementPage = document.getElementById('agreement-page');
+        const welcomePage = document.getElementById('welcome-page');
         
         const showContractorBtn = document.getElementById('show-contractor-page');
         const showCustomerBtn = document.getElementById('show-customer-page');
         const showTosBtns = document.querySelectorAll('.show-tos-page');
         const showAgreementBtns = document.querySelectorAll('.show-agreement-page');
         const backButtons = document.querySelectorAll('.back-button');
+        const returnHomeLinks = document.querySelectorAll('.show-customer-page-link');
 
         let lastActivePage = customerPage; // Keep track of the last viewed page
 
         // --- Page Switching Logic ---
         function showPage(pageToShow) {
-            // First, determine which page is currently active
-            if (!customerPage.classList.contains('hidden')) {
-                lastActivePage = customerPage;
-            } else if (!contractorPage.classList.contains('hidden')) {
-                lastActivePage = contractorPage;
+            // First, determine which page is currently active and not hidden
+            const pages = [customerPage, contractorPage, tosPage, agreementPage, welcomePage];
+            const activePage = pages.find(p => !p.classList.contains('hidden'));
+            if (activePage && activePage !== pageToShow) {
+                 lastActivePage = activePage;
             }
 
             // Hide all pages
-            customerPage.classList.add('hidden');
-            contractorPage.classList.add('hidden');
-            tosPage.classList.add('hidden');
-            agreementPage.classList.add('hidden');
+            pages.forEach(p => p.classList.add('hidden'));
 
             // Show the requested page
             pageToShow.classList.remove('hidden');
@@ -1126,20 +1208,34 @@
         showTosBtns.forEach(btn => btn.addEventListener('click', () => showPage(tosPage)));
         showAgreementBtns.forEach(btn => btn.addEventListener('click', () => showPage(agreementPage)));
         backButtons.forEach(btn => btn.addEventListener('click', () => showPage(lastActivePage)));
+        returnHomeLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                history.pushState("", document.title, window.location.pathname + window.location.search); // Clear hash
+                showPage(customerPage)
+            });
+        });
+
+        // Check for #welcome hash on page load (for redirect from Stripe)
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#welcome') {
+                showPage(welcomePage);
+            }
+        });
 
 
         // --- Stripe Checkout ---
         document.getElementById('membershipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Collect form data for URL parameters
             const formData = new FormData(this);
             const email = encodeURIComponent(formData.get('email'));
             const name = encodeURIComponent(formData.get('name'));
             
-            // Redirect to Stripe with pre-filled information
             // IMPORTANT: Replace with your actual Stripe Payment Link URL
-            window.location.href = `https://buy.stripe.com/fZueVccuMciT7d2a580Fi01?prefilled_email=${email}&client_reference_id=${email}`;
+            const stripePaymentLink = `https://buy.stripe.com/fZueVccuMciT7d2a580Fi01?prefilled_email=${email}&client_reference_id=${email}`;
+            
+            window.location.href = stripePaymentLink;
         });
 
 
