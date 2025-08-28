@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComfortGuard HVAC Services</title>
+    <title>Mechanical Temp Service Plan - Just $55/Month</title>
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8f9fa; /* Base background for welcome page */
         }
         
         .container {
@@ -32,14 +30,12 @@
         .hidden {
             display: none;
         }
-
-        /* --- STYLES FOR CUSTOMER PAGE --- */
-
+        
         /* Header */
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 20px 0 60px; /* Adjusted padding */
+            padding: 20px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -55,10 +51,8 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
+            height: 50px;
+            width: auto;
         }
         
         .header::before {
@@ -75,7 +69,7 @@
         .header-content {
             position: relative;
             z-index: 1;
-            padding-top: 20px; /* Add padding to separate from nav */
+            padding-top: 20px;
         }
         
         .header h1 {
@@ -90,21 +84,6 @@
             margin-bottom: 25px;
             opacity: 0.95;
         }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-        .nav-link:hover {
-             background: rgba(255,255,255,0.3) !important;
-        }
         
         .price-badge {
             display: inline-block;
@@ -118,6 +97,7 @@
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
             transform: scale(1);
             transition: transform 0.3s ease;
+            text-decoration: none;
         }
         
         .price-badge:hover {
@@ -180,170 +160,37 @@
             color: #666;
             font-size: 1.1rem;
         }
-
-        /* Coverage Details Section */
-        .coverage-details {
+        
+        /* Features Section */
+        .features {
             padding: 80px 0;
             background: white;
         }
-        .coverage-grid {
+        
+        .features-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
-        .coverage-column {
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
             background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
         }
-        .coverage-column h3 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e1e5e9;
-        }
-        .coverage-list {
-            list-style: none;
-        }
-        .coverage-list li {
-            margin-bottom: 12px;
-            font-size: 1.1rem;
-            position: relative;
-            padding-left: 30px;
-        }
-        .coverage-list li::before {
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        .included li::before {
+        
+        .feature-item::before {
             content: '✓';
             color: #28a745;
-        }
-        .discounted li::before {
-            content: '+';
-            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 15px;
         }
         
-        /* Service Area Checker */
-        .area-checker {
-            padding: 60px 0;
-            background: #f8f9fa;
-            text-align: center;
-        }
-        .area-checker-box {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .area-checker-box h3 {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        .zip-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        .zip-input {
-            width: 60%;
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-        .zip-button {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 10px;
-            background: #2c3e50;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .zip-button:hover {
-            background: #34495e;
-        }
-        .zip-result {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            min-height: 25px;
-        }
-        .zip-result.success {
-            color: #28a745;
-        }
-        .zip-result.error {
-            color: #e74c3c;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .faq-item {
-            background: #f8f9fa;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            border: 1px solid #e1e5e9;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 20px 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #2c3e50;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background-color: #e9ecef;
-        }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #3498db;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-question.active::after {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .faq-answer p {
-            padding: 0 30px 20px;
-        }
-
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -412,6 +259,62 @@
             opacity: 0.9;
         }
         
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* Trust Indicators */
+        .trust-indicators {
+            padding: 60px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .trust-badge {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
         /* Footer */
         .footer {
             background: #2c3e50;
@@ -419,182 +322,18 @@
             padding: 40px 0;
             text-align: center;
         }
-        .footer-links {
-            margin-top: 10px;
-        }
-        .footer-links a {
+        .footer a {
             color: #bdc3c7;
             text-decoration: none;
-            margin: 0 10px;
-            cursor: pointer;
         }
-        .footer-links a:hover {
+        .footer a:hover {
             color: white;
-        }
-
-        /* --- STYLES FOR CONTRACTOR PAGE --- */
-
-        .contractor-header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        }
-
-        .contractor-header .highlight {
-            background: #e74c3c;
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
-        }
-
-        .how-it-works, .coverage-areas, .testimonials, .requirements-section {
-            background: #f8f9fa;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-        }
-
-        .step-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 25px;
-        }
-
-        .step-card h3 {
-            font-size: 1.6rem;
-        }
-
-        /* Earnings Calculator */
-        .earnings-calculator {
-            padding: 80px 0;
-            background: white;
-            text-align: center;
-        }
-        .calculator-box {
-            background: #f8f9fa;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .calculator-box h3 {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 25px;
-        }
-        .slider-group {
-            margin-bottom: 20px;
-        }
-        .slider-label {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        .earnings-slider {
-            width: 100%;
-            cursor: pointer;
-        }
-        .earnings-display {
-            font-size: 2.8rem;
-            font-weight: bold;
-            color: #27ae60;
-            margin-top: 20px;
-        }
-        .earnings-display span {
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #666;
-            display: block;
-        }
-
-        /* Requirements Section */
-        .requirements-list {
-            max-width: 800px;
-            margin: 40px auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .requirement-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .contractor-benefits .benefit-card {
-             border-left: 5px solid #3498db;
-        }
-        .contractor-benefits .benefit-card:hover {
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        .contractor-benefits .benefit-icon {
-            font-size: 3rem;
-            background: none;
-        }
-
-        .partner-testimonials {
-            background: white;
-            padding: 80px 0;
-        }
-
-        .signup-section {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
-            padding: 80px 0;
-            color: white;
-        }
-        .contractor-signup-form {
-            max-width: 700px;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        .submit-button {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-        }
-        .submit-button:hover {
-            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
-        }
-        .form-confirmation {
-            text-align: center;
-            padding: 40px 20px;
-            background: #27ae60;
-            color: white;
-            border-radius: 15px;
         }
         
-        /* Legal Pages (TOS & Agreement) */
+        /* Legal Page */
         .legal-page {
             padding: 80px 0;
+            background: #f8f9fa;
         }
         .legal-content {
             background: white;
@@ -637,54 +376,20 @@
             background: #34495e;
         }
 
-        /* --- STYLES FOR WELCOME PAGE --- */
-        .welcome-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .welcome-header h1 { font-size: 2.8rem; }
-        .welcome-main-content {
-            background: white;
-            max-width: 800px;
-            margin: -30px auto 0;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #28a745;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-        }
-        .welcome-main-content h2 {
-            font-size: 2.2rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        .welcome-footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #666;
-        }
-        .welcome-footer a {
-            color: #667eea;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .welcome-footer a:hover {
-            text-decoration: underline;
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
         }
 
         /* Responsive */
@@ -692,31 +397,22 @@
             .header h1 {
                 font-size: 2.2rem;
             }
+            
             .header .subtitle {
                 font-size: 1.1rem;
             }
+            
             .price-badge {
                 font-size: 1.4rem;
                 padding: 10px 25px;
             }
+            
             .section-title {
                 font-size: 2rem;
             }
+            
             .signup-form {
                 margin: 20px;
-                padding: 30px 20px;
-            }
-             .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-             .header-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .welcome-header h1 { font-size: 2.2rem; }
-            .welcome-main-content {
-                margin: -20px 20px 0;
                 padding: 30px 20px;
             }
         }
@@ -724,30 +420,25 @@
 </head>
 <body>
 
-    <!-- =============================================================== -->
-    <!-- ============== CUSTOMER-FACING PAGE CONTENT =================== -->
-    <!-- =============================================================== -->
-    <div id="customer-page">
+    <div id="main-content">
+        <!-- Header -->
         <section class="header">
             <div class="container">
                 <nav class="header-nav">
-                    <a href="#" class="logo">ComfortGuard</a>
-                    <button id="show-contractor-page" class="nav-link">
-                        HVAC Contractor? Join Our Network →
-                    </button>
+                    <a href="#">
+                        <img src="https://images.squarespace-cdn.com/content/v1/64b8ce7983e67906ccb6616f/5b6094f5-caee-47d6-8b5e-9b762773f4c0/white_logo_transparent_background.png?format=2500w" alt="Mechanical Temp Logo" class="logo">
+                    </a>
                 </nav>
-                
                 <div class="header-content fade-in">
                     <h1>Never Worry About HVAC Repairs Again</h1>
                     <p class="subtitle">Premium HVAC maintenance & basic parts coverage for your home</p>
-                    <a href="#customer-signup-section" style="text-decoration: none;">
-                        <div class="price-badge">Only $55/Month</div>
-                    </a>
+                    <a href="#signup-section" class="price-badge">Only $55/Month</a>
                     <p>Save hundreds on unexpected repairs • Priority service • Peace of mind</p>
                 </div>
             </div>
         </section>
 
+        <!-- Benefits -->
         <section class="benefits">
             <div class="container">
                 <h2 class="section-title">What's Included in Your Membership</h2>
@@ -767,88 +458,48 @@
                         <h3>2X Annual Maintenance</h3>
                         <p>Spring and fall tune-ups to keep your system running efficiently all year long</p>
                     </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Labor Discounts</h3>
+                        <p>15% off all repair labor costs and 10% off major system replacements</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📞</div>
+                        <h3>24/7 Emergency Line</h3>
+                        <p>Direct access to our emergency hotline for urgent HVAC issues</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📋</div>
+                        <h3>Detailed Reports</h3>
+                        <p>Complete system health reports after every service visit with recommendations</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="coverage-details">
+        <!-- Features -->
+        <section class="features">
             <div class="container">
-                <h2 class="section-title">Coverage Details</h2>
-                <div class="coverage-grid">
-                    <div class="coverage-column">
-                        <h3>Included Services & Parts</h3>
-                        <ul class="coverage-list included">
-                            <li>Two Annual Tune-Ups</li>
-                            <li>Standard Air Filters</li>
-                            <li>Fuses & Breakers</li>
-                            <li>Capacitors & Contactors</li>
-                            <li>Thermostat Calibration</li>
-                            <li>Condensate Line Cleaning</li>
-                        </ul>
-                    </div>
-                    <div class="coverage-column">
-                        <h3>Discounted Major Repairs</h3>
-                        <ul class="coverage-list discounted">
-                            <li>15% Off All Repair Labor</li>
-                            <li>10% Off Refrigerant</li>
-                            <li>10% Off Blower Motors</li>
-                            <li>10% Off Compressor Replacements</li>
-                            <li>10% Off Full System Replacements</li>
-                            <li>10% Off Ductwork Modifications</li>
-                        </ul>
-                    </div>
+                <h2 class="section-title">Everything You Need to Keep Your Home Comfortable</h2>
+                <div class="features-list">
+                    <div class="feature-item">Professional system cleaning</div>
+                    <div class="feature-item">Thermostat calibration</div>
+                    <div class="feature-item">Refrigerant level check</div>
+                    <div class="feature-item">Electrical connection inspection</div>
+                    <div class="feature-item">Ductwork examination</div>
+                    <div class="feature-item">Energy efficiency optimization</div>
+                    <div class="feature-item">Indoor air quality assessment</div>
+                    <div class="feature-item">System performance testing</div>
                 </div>
             </div>
         </section>
 
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            What if I need a major repair not covered by the plan?
-                        </button>
-                        <div class="faq-answer">
-                            <p>Our membership covers all basic parts and maintenance to prevent major issues. If a major component like a compressor or motor fails, members receive a 10% discount on the total cost of the replacement, ensuring you still get significant savings.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Is there a long-term contract?
-                        </button>
-                        <div class="faq-answer">
-                            <p>No, there are no long-term contracts. Our membership is a simple month-to-month subscription. You can cancel at any time with no hidden fees or penalties. We also offer a 30-day money-back guarantee if you're not completely satisfied.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            How quickly can I expect service?
-                        </button>
-                        <div class="faq-answer">
-                            <p>As a ComfortGuard member, you receive priority service. This means you jump to the front of the line. We guarantee a service appointment within 24 hours of your call, and often can provide same-day service for urgent issues.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="area-checker">
-            <div class="container">
-                <div class="area-checker-box">
-                    <h3>Check If We Serve Your Area</h3>
-                    <form id="zip-form" class="zip-form">
-                        <input type="text" id="zip-input" class="zip-input" placeholder="Enter Your ZIP Code" required>
-                        <button type="submit" class="zip-button">Check Availability</button>
-                    </form>
-                    <div id="zip-result" class="zip-result"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section" id="customer-signup-section">
+        <!-- CTA Section -->
+        <section class="cta-section" id="signup-section">
             <div class="container">
                 <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Start Saving Today</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 0;">Join thousands of homeowners who never worry about HVAC costs</p>
+                
                 <div class="signup-form">
                     <h3 style="color: #333; margin-bottom: 25px; font-size: 1.5rem;">Get Started Now</h3>
                     <form id="membershipForm">
@@ -860,203 +511,74 @@
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
                             <label for="phone">Phone Number</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="address">Service Address</label>
+                            <label for="address">Home Address</label>
                             <input type="text" id="address" name="address" required>
                         </div>
-                        <button type="submit" class="cta-button">Proceed to Payment - $55/Month</button>
+                        <button type="submit" class="cta-button">Start My Membership - $55/Month</button>
                     </form>
-                    <p class="guarantee">30-day money-back guarantee • Cancel anytime</p>
+                    <p class="guarantee">30-day money-back guarantee • Cancel anytime • No hidden fees</p>
                 </div>
             </div>
         </section>
 
-        <footer class="footer">
+        <!-- Testimonials -->
+        <section class="testimonials">
             <div class="container">
-                <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
-                <div class="footer-links">
-                    <a class="show-tos-page">Terms of Service</a>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- =============================================================== -->
-    <!-- ================ CONTRACTOR PAGE CONTENT ====================== -->
-    <!-- =============================================================== -->
-    <div id="contractor-page" class="hidden">
-        <section class="header contractor-header">
-            <div class="container">
-                 <nav class="header-nav">
-                    <a href="#" class="logo">ComfortGuard</a>
-                    <button id="show-customer-page" class="nav-link">
-                        Looking for HVAC Service? Click Here →
-                    </button>
-                </nav>
-                <div class="header-content">
-                    <h1>Get More HVAC Jobs</h1>
-                    <p class="subtitle">Join our contractor network and receive qualified leads in your service area</p>
-                    <a href="#contractor-signup-section" style="text-decoration: none;">
-                        <div class="highlight">Steady Work • Quality Leads • Fast Payment</div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="how-it-works">
-            <div class="container">
-                <h2 class="section-title">How Our Network Works</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>Sign Up as Vendor</h3>
-                        <p>Complete our simple application and verification process.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>Get Job Notifications</h3>
-                        <p>Receive text/email alerts for jobs in your area.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>Accept & Complete Work</h3>
-                        <p>Accept jobs that fit your schedule and complete the service.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3>Get Paid Fast</h3>
-                        <p>Receive payment within 7-14 days via direct deposit.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="earnings-calculator">
-            <div class="container">
-                <div class="calculator-box">
-                    <h3>Estimate Your Monthly Earnings</h3>
-                    <div class="slider-group">
-                        <label for="jobs-slider" class="slider-label" id="jobs-label">5 Jobs Per Week</label>
-                        <input type="range" min="1" max="20" value="5" class="earnings-slider" id="jobs-slider">
-                    </div>
-                    <div class="earnings-display" id="earnings-output">
-                        $2,165
-                        <span>Estimated Monthly Earnings</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="requirements-section">
-            <div class="container">
-                <h2 class="section-title">Our Requirements</h2>
-                <div class="requirements-list">
-                    <div class="requirement-item">Valid HVAC License</div>
-                    <div class="requirement-item">General Liability Insurance</div>
-                    <div class="requirement-item">Background Check</div>
-                    <div class="requirement-item">3+ Years of Experience</div>
-                    <div class="requirement-item">Own Tools & Vehicle</div>
-                    <div class="requirement-item">Commitment to Quality</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="benefits contractor-benefits">
-            <div class="container">
-                <h2 class="section-title">Why Join Our Contractor Network?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">📱</div>
-                        <h3>Pre-Qualified Leads</h3>
-                        <p>All customers are verified members with a premium plan. No cold calls, just quality leads.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">💰</div>
-                        <h3>Guaranteed Payment</h3>
-                        <p>We handle all billing and collections. You get paid on time, every time.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">📍</div>
-                        <h3>Choose Your Area</h3>
-                        <p>Work in your preferred service radius. Accept jobs that make sense.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="partner-testimonials">
-            <div class="container">
-                <h2 class="section-title">What Our Partners Say</h2>
+                <h2 class="section-title">What Our Members Say</h2>
                 <div class="testimonial-grid">
                     <div class="testimonial">
-                        <p class="testimonial-text">"Joining this network was the best decision for my business. I've filled my schedule and stopped wasting money on ads that don't work."</p>
-                        <p class="testimonial-author">— Tom B., Precision Air LLC</p>
+                        <p class="testimonial-text">"My AC died in July and they had a tech out the same day. The basic parts were covered and I only paid for labor. Saved me over $400!"</p>
+                        <p class="testimonial-author">— Sarah Martinez, Homeowner</p>
                     </div>
                     <div class="testimonial">
-                        <p class="testimonial-text">"The lead quality is fantastic. These are real customers who need work done now. The fast payments are a huge plus."</p>
-                        <p class="testimonial-author">— Maria G., Frosty Solutions</p>
+                        <p class="testimonial-text">"The bi-annual maintenance has kept our 12-year-old system running like new. Best $55 I spend every month."</p>
+                        <p class="testimonial-author">— Mike Thompson, Homeowner</p>
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Professional service, fair pricing, and I love having priority scheduling. Never wait more than 24 hours for service."</p>
+                        <p class="testimonial-author">— Jennifer Liu, Homeowner</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="signup-section" id="contractor-signup-section">
+        <!-- Trust Indicators -->
+        <section class="trust-indicators">
             <div class="container">
-                <h2 class="section-title" style="color: white;">Become a Partner Today</h2>
-                <div class="signup-form contractor-signup-form">
-                    <div id="contractor-form-container">
-                        <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.5rem;">Contractor Application</h3>
-                        <form id="contractorForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="companyName">Company Name</label>
-                                    <input type="text" id="companyName" name="companyName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contactName">Contact Name</label>
-                                    <input type="text" id="contactName" name="contactName" required>
-                                </div>
-                            </div>
-                             <div class="form-group full-width">
-                                <label for="contractorEmail">Email Address</label>
-                                <input type="email" id="contractorEmail" name="contractorEmail" required>
-                            </div>
-                            <button type="submit" class="submit-button">Submit Application</button>
-                        </form>
-                    </div>
-                    <div id="contractor-confirmation" class="form-confirmation hidden">
-                        <h3>Thank You!</h3>
-                        <p>Your application has been received. We will review it and contact you within 3-5 business days.</p>
-                    </div>
+                <h3>Trusted by Local Homeowners</h3>
+                <div class="trust-badges">
+                    <div class="trust-badge">Licensed & Insured</div>
+                    <div class="trust-badge">BBB A+ Rated</div>
+                    <div class="trust-badge">24/7 Support</div>
+                    <div class="trust-badge">5+ Years Experience</div>
                 </div>
             </div>
         </section>
 
+        <!-- Footer -->
         <footer class="footer">
             <div class="container">
-                <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
-                 <div class="footer-links">
-                    <a class="show-tos-page">Terms of Service</a>
-                    <a class="show-agreement-page">Contractor Agreement</a>
-                </div>
+                <p>&copy; 2025 Mechanical Temp HVAC Services. All rights reserved.</p>
+                <p style="margin-top: 10px; opacity: 0.8;">
+                    Call us: (313) 282-4758 | Email: office@mechanicaltemp.com | 
+                    <a href="http://www.mechanicaltemp.com" target="_blank">www.mechanicaltemp.com</a> |
+                    <a href="#" id="show-tos-link" style="cursor: pointer;">Terms of Service</a>
+                </p>
             </div>
         </footer>
     </div>
 
-    <!-- =============================================================== -->
-    <!-- ============= TERMS OF SERVICE PAGE CONTENT =================== -->
-    <!-- =============================================================== -->
     <div id="tos-page" class="hidden">
         <section class="legal-page">
             <div class="container">
                 <div class="legal-content">
-                    <h1>ComfortGuard HVAC Membership Terms of Service</h1>
+                    <h1>Mechanical Temp HVAC Membership Terms of Service</h1>
                     <p>Effective Date: August 27, 2025 | Last Modified: August 27, 2025 | Version: 1.1</p>
-
                     <h2>1. Initial Equipment Assessment & Right to Refuse Service</h2>
                     <h3>30-Day Evaluation Period</h3>
                     <p>A mandatory equipment inspection will be scheduled within 30 days of membership enrollment. ComfortGuard reserves the right to cancel membership with a full refund if the equipment is found to pose immediate safety hazards, is beyond economical repair (repair costs exceed 60% of replacement value), exceeds 20 years of age (subject to case-by-case evaluation), has been improperly maintained creating excessive liability risk, or contains code violations or unsafe modifications.</p>
@@ -1068,172 +590,32 @@
                         <li>Ductwork with leakage greater than 40%.</li>
                         <li>Systems with unauthorized or "jury-rigged" modifications.</li>
                     </ul>
-
-                    <h2>2. Safety Requirements & Exclusions</h2>
-                    <h3>Carbon Monoxide & Combustion Safety</h3>
-                    <p>Cracked heat exchangers automatically disqualify equipment. Gas leaks must be repaired before coverage begins. The customer is responsible for installing and maintaining CO detectors. ComfortGuard is not liable for any damages related to CO.</p>
-                    
-                    <h2>3. Coverage Inclusions & Limitations</h2>
-                    <p>The monthly membership fee is $55, totaling $660 annually.</p>
-                    <h3>Included Basic Parts (per visit maximum $200)</h3>
-                    <ul>
-                        <li>Air filters and belts</li>
-                        <li>Contactors and capacitors</li>
-                        <li>Thermostats and basic controls</li>
-                    </ul>
-                    <h3>Major Component Coverage</h3>
-                    <ul>
-                        <li>Compressors: Customer pays 50% of replacement cost.</li>
-                        <li>Motors/Blowers: Covered if under 10 years old.</li>
-                    </ul>
-
-                    <h2>4. Exclusions & Non-Covered Items</h2>
-                    <h3>Never Covered</h3>
-                    <p>Heat exchanger replacement, ductwork replacement, electrical panel work, code compliance upgrades, environmental contamination cleanup, and consequential damages (e.g., water, mold) are not covered. Commercial or rental property systems are excluded.</p>
-                    
-                    <h2>5. Parts & Labor Warranty</h2>
-                    <p>We provide a 90-day warranty on ComfortGuard-supplied parts and a 30-day labor warranty on installation. Major components have specific warranties (e.g., 1-year parts on compressors). The warranty is void if the system is modified by non-network technicians.</p>
-                    
-                    <h2>8. Membership Cancellation & Termination</h2>
-                    <p>Customers may cancel with 30-day written notice. No refunds are provided for partial months. An equipment assessment fee of $150 may be charged if canceling within the first 60 days of membership. ComfortGuard reserves the right to cancel memberships for reasons including unsafe equipment conditions or non-payment.</p>
-
                     <button class="back-button">← Go Back</button>
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- =============================================================== -->
-    <!-- ============ CONTRACTOR AGREEMENT PAGE CONTENT ================ -->
-    <!-- =============================================================== -->
-    <div id="agreement-page" class="hidden">
-        <section class="legal-page">
-            <div class="container">
-                <div class="legal-content">
-                    <h1>ComfortGuard Contractor Network Agreement</h1>
-                    <p>Effective Date: August 27, 2025 | Version: 1.0</p>
-
-                    <h2>1. Agreement Overview</h2>
-                    <h3>Relationship Type</h3>
-                    <p>Contractor operates as an independent business, not an employee of ComfortGuard. Participation in the network is voluntary. This is a month-to-month agreement with a 30-day termination notice by either party.</p>
-
-                    <h2>2. Payment Terms & Compensation</h2>
-                    <h3>Payment Structure</h3>
-                    <p>ComfortGuard pays the Contractor standard market rates per service call, with premium rates for emergencies. Payments are made Net 15 days from the submission of a complete invoice.</p>
-                    <h3>Invoicing Requirements</h3>
-                    <p>Invoices must be submitted within 48 hours of service completion and include the work order number, member information, services performed, parts used, and photo documentation.</p>
-
-                    <h2>3. Service Standards & Performance Requirements</h2>
-                    <h3>Response Time Standards</h3>
-                    <p>A 4-hour maximum response time for emergencies and same or next-day service for priority calls is required. All work must meet local codes and manufacturer specifications.</p>
-                    <h3>Customer Service Requirements</h3>
-                    <p>A professional appearance, respectful communication, and a clean work area are required at all times.</p>
-
-                    <h2>4. Contractor Requirements & Qualifications</h2>
-                    <h3>Licensing & Certification</h3>
-                    <p>Contractors must maintain a valid state HVAC license, EPA Universal Certification, and carry a minimum of $1M in general liability insurance.</p>
-                    <h3>Background & Safety</h3>
-                    <p>All technicians must pass a background check and comply with our drug testing program.</p>
-
-                    <h2>5. Termination Conditions</h2>
-                    <p>ComfortGuard may terminate this agreement immediately for safety violations, customer complaints, or lapse in insurance coverage. The Contractor may terminate with a 30-day notice.</p>
-
-                    <h2>6. Dispute Resolution & Legal Terms</h2>
-                    <p>Disputes will be handled through good faith negotiation, followed by mediation. This agreement is governed by the laws of the state of Michigan.</p>
-
-                    <button class="back-button">← Go Back</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- =============================================================== -->
-    <!-- ================= WELCOME PAGE CONTENT ======================== -->
-    <!-- =============================================================== -->
-    <div id="welcome-page" class="hidden">
-        <section class="welcome-header">
-            <div class="container">
-                <h1>Welcome to ComfortGuard!</h1>
-            </div>
-        </section>
-        <div class="container">
-            <div class="welcome-main-content">
-                <div class="success-icon">✓</div>
-                <h2>Payment Successful!</h2>
-                <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">
-                    Your membership is now active. We'll contact you within 48 hours to schedule your initial equipment assessment.
-                </p>
-                <p>Questions? Call (555) 123-HVAC</p>
-            </div>
-        </div>
-        <div class="welcome-footer">
-            <div class="container">
-                <p>&copy; 2025 ComfortGuard HVAC Services. All rights reserved.</p>
-                <p style="margin-top: 10px;">
-                    <a class="show-customer-page-link">Return to Home</a>
-                </p>
-            </div>
-        </div>
-    </div>
-
 
     <script>
-        // Get the page containers and the navigation buttons
-        const customerPage = document.getElementById('customer-page');
-        const contractorPage = document.getElementById('contractor-page');
+        const mainContent = document.getElementById('main-content');
         const tosPage = document.getElementById('tos-page');
-        const agreementPage = document.getElementById('agreement-page');
-        const welcomePage = document.getElementById('welcome-page');
-        
-        const showContractorBtn = document.getElementById('show-contractor-page');
-        const showCustomerBtn = document.getElementById('show-customer-page');
-        const showTosBtns = document.querySelectorAll('.show-tos-page');
-        const showAgreementBtns = document.querySelectorAll('.show-agreement-page');
-        const backButtons = document.querySelectorAll('.back-button');
-        const returnHomeLinks = document.querySelectorAll('.show-customer-page-link');
+        const showTosLink = document.getElementById('show-tos-link');
+        const backButton = tosPage.querySelector('.back-button');
 
-        let lastActivePage = customerPage; // Keep track of the last viewed page
-
-        // --- Page Switching Logic ---
-        function showPage(pageToShow) {
-            // First, determine which page is currently active and not hidden
-            const pages = [customerPage, contractorPage, tosPage, agreementPage, welcomePage];
-            const activePage = pages.find(p => !p.classList.contains('hidden'));
-            if (activePage && activePage !== pageToShow) {
-                 lastActivePage = activePage;
-            }
-
-            // Hide all pages
-            pages.forEach(p => p.classList.add('hidden'));
-
-            // Show the requested page
-            pageToShow.classList.remove('hidden');
-            window.scrollTo(0, 0); // Scroll to top
-        }
-
-        showContractorBtn.addEventListener('click', () => showPage(contractorPage));
-        showCustomerBtn.addEventListener('click', () => showPage(customerPage));
-        showTosBtns.forEach(btn => btn.addEventListener('click', () => showPage(tosPage)));
-        showAgreementBtns.forEach(btn => btn.addEventListener('click', () => showPage(agreementPage)));
-        backButtons.forEach(btn => btn.addEventListener('click', () => showPage(lastActivePage)));
-        returnHomeLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                // Clear the hash from the URL without reloading the page
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-                showPage(customerPage);
-            });
+        showTosLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            mainContent.classList.add('hidden');
+            tosPage.classList.remove('hidden');
+            window.scrollTo(0, 0);
         });
 
-        // Check for #welcome hash on page load (for redirect from Stripe)
-        window.addEventListener('load', () => {
-            if (window.location.hash === '#welcome') {
-                showPage(welcomePage);
-            }
+        backButton.addEventListener('click', () => {
+            tosPage.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            window.scrollTo(0, 0);
         });
 
-
-        // --- Stripe Checkout ---
+        // Form submission handler
         document.getElementById('membershipForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1241,105 +623,32 @@
             const email = encodeURIComponent(formData.get('email'));
             const name = encodeURIComponent(formData.get('name'));
             
-            // IMPORTANT: Replace with your actual Stripe Payment Link URL
-            const stripePaymentLink = `https://buy.stripe.com/fZueVccuMciT7d2a580Fi01?prefilled_email=${email}&client_reference_id=${email}`;
-            
-            window.location.href = stripePaymentLink;
+            // Redirect to Stripe with pre-filled information
+            window.location.href = `https://buy.stripe.com/fZueVccuMciT7d2a580Fi01?prefilled_email=${email}&client_reference_id=${email}`;
         });
 
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // --- Contractor Form Handler ---
-        const contractorFormContainer = document.getElementById('contractor-form-container');
-        const contractorConfirmation = document.getElementById('contractor-confirmation');
-        document.getElementById('contractorForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your server
-            const formData = new FormData(this);
-            console.log('Contractor Application Submitted:');
-            for (let [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
-
-            // Show confirmation message
-            contractorFormContainer.classList.add('hidden');
-            contractorConfirmation.classList.remove('hidden');
-        });
-
-        // --- FAQ Accordion Handler ---
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const isActive = question.classList.contains('active');
-                if (isActive) {
-                    question.classList.remove('active');
-                    answer.style.maxHeight = null;
-                } else {
-                    question.classList.add('active');
-                    answer.style.maxHeight = answer.scrollHeight + "px";
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
+
+        // Observe benefit cards and other elements
+        document.querySelectorAll('.benefit-card, .testimonial, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
-
-        // --- Service Area Checker ---
-        const zipForm = document.getElementById('zip-form');
-        const zipInput = document.getElementById('zip-input');
-        const zipResult = document.getElementById('zip-result');
-        
-        // Metro Detroit Zip Codes for Wayne, Macomb, Washtenaw, and Oakland Counties
-        const serviceableZips = [
-            // Wayne County
-            '48101', '48111', '48120', '48122', '48124', '48125', '48126', '48127', '48128', '48134', '48135', '48138', '48141', '48146', '48150', '48152', '48154', '48164', '48170', '48173', '48174', '48180', '48183', '48184', '48185', '48186', '48187', '48188', '48192', '48193', '48195', '48201', '48202', '48203', '48204', '48205', '48206', '48207', '48208', '48209', '48210', '48211', '48212', '48213', '48214', '48215', '48216', '48217', '48219', '48221', '48223', '48224', '48225', '48226', '48227', '48228', '48230', '48233', '48234', '48235', '48236', '48238', '48239', '48240', '48243',
-            // Macomb County
-            '48005', '48015', '48021', '48026', '48035', '48036', '48038', '48042', '48043', '48044', '48045', '48046', '48047', '48048', '48050', '48051', '48062', '48065', '48066', '48080', '48081', '48082', '48088', '48089', '48090', '48091', '48092', '48093', '48094', '48095', '48096', '48310', '48311', '48312', '48313', '48314', '48315', '48316', '48317', '48318',
-            // Washtenaw County
-            '48103', '48104', '48105', '48106', '48107', '48108', '48109', '48113', '48115', '48118', '48130', '48137', '48158', '48160', '48175', '48176', '48189', '48190', '48191', '48197', '48198', '49236', '49240',
-            // Oakland County
-            '48007', '48009', '48012', '48017', '48025', '48030', '48033', '48034', '48067', '48068', '48069', '48070', '48071', '48072', '48073', '48075', '48076', '48083', '48084', '48085', '48098', '48167', '48178', '48220', '48237', '48301', '48302', '48303', '48304', '48306', '48307', '48308', '48309', '48320', '48321', '48322', '48323', '48324', '48325', '48326', '48327', '48328', '48329', '48331', '48332', '48333', '48334', '48335', '48336', '48340', '48341', '48342', '48343', '48346', '48347', '48348', '48350', '48353', '48356', '48357', '48359', '48360', '48361', '48362', '48363', '48366', '48367', '48370', '48371', '48374', '48375', '48376', '48377', '48380', '48381', '48382', '48383', '48386', '48387', '48390', '48393', '48442'
-        ];
-
-        zipForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const enteredZip = zipInput.value.trim();
-            
-            zipResult.textContent = ''; // Clear previous result
-            zipResult.className = 'zip-result'; // Reset class
-
-            if (!/^\d{5}$/.test(enteredZip)) {
-                zipResult.textContent = 'Please enter a valid 5-digit ZIP code.';
-                zipResult.classList.add('error');
-                return;
-            }
-
-            if (serviceableZips.includes(enteredZip)) {
-                zipResult.textContent = 'Great! We serve your area.';
-                zipResult.classList.add('success');
-            } else {
-                zipResult.textContent = "Sorry, we don't cover that area yet.";
-                zipResult.classList.add('error');
-            }
-        });
-
-        // --- Earnings Calculator ---
-        const jobsSlider = document.getElementById('jobs-slider');
-        const jobsLabel = document.getElementById('jobs-label');
-        const earningsOutput = document.getElementById('earnings-output');
-        const avgValuePerJob = 100; // Set the average earning per job
-
-        function updateEarnings() {
-            const jobsPerWeek = jobsSlider.value;
-            const monthlyEarnings = jobsPerWeek * avgValuePerJob * 4.33; // 4.33 weeks in a month
-
-            jobsLabel.textContent = `${jobsPerWeek} Jobs Per Week`;
-            earningsOutput.innerHTML = `$${monthlyEarnings.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
-                                        <span>Estimated Monthly Earnings</span>`;
-        }
-
-        jobsSlider.addEventListener('input', updateEarnings);
-        // Initial calculation on page load
-        updateEarnings();
-
     </script>
 </body>
 </html>
