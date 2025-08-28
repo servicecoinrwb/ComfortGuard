@@ -12,6 +12,10 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -369,17 +373,16 @@
             font-weight: 600;
         }
         
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 15px;
             border: 2px solid #e1e5e9;
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
-            background-color: white;
         }
         
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -737,7 +740,9 @@
                 <div class="header-content fade-in">
                     <h1>Never Worry About HVAC Repairs Again</h1>
                     <p class="subtitle">Premium HVAC maintenance & basic parts coverage for your home</p>
-                    <div class="price-badge">Only $55/Month</div>
+                    <a href="#customer-signup-section" style="text-decoration: none;">
+                        <div class="price-badge">Only $55/Month</div>
+                    </a>
                     <p>Save hundreds on unexpected repairs • Priority service • Peace of mind</p>
                 </div>
             </div>
@@ -841,7 +846,7 @@
             </div>
         </section>
 
-        <section class="cta-section">
+        <section class="cta-section" id="customer-signup-section">
             <div class="container">
                 <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Start Saving Today</h2>
                 <div class="signup-form">
@@ -895,7 +900,9 @@
                 <div class="header-content">
                     <h1>Get More HVAC Jobs</h1>
                     <p class="subtitle">Join our contractor network and receive qualified leads in your service area</p>
-                    <div class="highlight">Steady Work • Quality Leads • Fast Payment</div>
+                    <a href="#contractor-signup-section" style="text-decoration: none;">
+                        <div class="highlight">Steady Work • Quality Leads • Fast Payment</div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -997,73 +1004,26 @@
             </div>
         </section>
 
-        <section class="signup-section">
+        <section class="signup-section" id="contractor-signup-section">
             <div class="container">
                 <h2 class="section-title" style="color: white;">Become a Partner Today</h2>
                 <div class="signup-form contractor-signup-form">
                     <div id="contractor-form-container">
                         <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.5rem;">Contractor Application</h3>
                         <form id="contractorForm">
-                           <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName" required>
-                                </div>
-                            </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="companyName">Company Name</label>
                                     <input type="text" id="companyName" name="companyName" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jobTitle">Job Title</label>
-                                    <input type="text" id="jobTitle" name="jobTitle">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contractorPhone">Phone Number</label>
-                                    <input type="tel" id="contractorPhone" name="contractorPhone" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="contractorEmail">Email Address</label>
-                                    <input type="email" id="contractorEmail" name="contractorEmail" required>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="streetAddress">Street Address</label>
-                                <input type="text" id="streetAddress" name="streetAddress" required>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input type="text" id="city" name="city" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="postalCode">Postal Code</label>
-                                    <input type="text" id="postalCode" name="postalCode" required>
+                                    <label for="contactName">Contact Name</label>
+                                    <input type="text" id="contactName" name="contactName" required>
                                 </div>
                             </div>
                              <div class="form-group full-width">
-                                <label for="primaryTrade">Primary Trade</label>
-                                <select id="primaryTrade" name="primaryTrade" required>
-                                    <option value="">Please Select</option>
-                                    <option value="hvac">HVAC</option>
-                                    <option value="refrigeration">Refrigeration</option>
-                                    <option value="electrical">Electrical</option>
-                                </select>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="employees">Number of Employees</label>
-                                <input type="number" id="employees" name="employees" min="1" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="message">Question / Message</label>
-                                <textarea id="message" name="message" rows="4"></textarea>
+                                <label for="contractorEmail">Email Address</label>
+                                <input type="email" id="contractorEmail" name="contractorEmail" required>
                             </div>
                             <button type="submit" class="submit-button">Submit Application</button>
                         </form>
