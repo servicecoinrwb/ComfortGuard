@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2193b0, #6dd5ed);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .scheduling-container {
+            padding: 40px;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            text-align: center;
+            font-weight: bold;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .calendar-day:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+            background: #f8f9fa;
+        }
+
+        .calendar-day.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #e9ecef;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .time-slot {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-right: 15px;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .confirmation {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .confirmation .check-icon {
+            font-size: 4em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .selected-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .selected-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: #28a745;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .scheduling-container {
+                padding: 20px;
+            }
+
+            .calendar {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+
+            .calendar-day {
+                padding: 10px 5px;
+                font-size: 14px;
+            }
+
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Schedule HVAC Service</h1>
+            <p>Book your heating & cooling appointment today</p>
+        </div>
+
+        <div class="scheduling-container">
+            <div class="progress-bar">
+                <div class="progress-step active" id="progress-1">1</div>
+                <div class="progress-step" id="progress-2">2</div>
+                <div class="progress-step" id="progress-3">3</div>
+                <div class="progress-step" id="progress-4">4</div>
+            </div>
+
+            <!-- Step 1: Select Date -->
+            <div class="step active" id="step-1">
+                <h2 class="step-title">Select a Date</h2>
+                <div class="calendar" id="calendar">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+                <div class="navigation">
+                    <button class="btn" onclick="nextStep()" id="next-btn-1" disabled>Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Time -->
+            <div class="step" id="step-2">
+                <h2 class="step-title">Select a Time</h2>
+                <div class="selected-info">
+                    <h3>Selected Date: <span id="selected-date"></span></h3>
+                </div>
+                <div class="time-slots" id="time-slots">
+                    <!-- Time slots will be generated by JavaScript -->
+                </div>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn" onclick="nextStep()" id="next-btn-2" disabled>Next Step</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Contact Information -->
+            <div class="step" id="step-3">
+                <h2 class="step-title">Your Information</h2>
+                <div class="selected-info">
+                    <h3>Appointment Details:</h3>
+                    <p><strong>Date:</strong> <span id="confirm-date"></span></p>
+                    <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+                </div>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="service-type">Service Needed *</label>
+                        <select id="service-type" name="service-type" required style="width: 100%; padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 16px;">
+                            <option value="">Select Service Type</option>
+                            <option value="AC Repair">AC Repair</option>
+                            <option value="AC Installation">AC Installation</option>
+                            <option value="AC Maintenance">AC Maintenance</option>
+                            <option value="Heating Repair">Heating Repair</option>
+                            <option value="Heating Installation">Heating Installation</option>
+                            <option value="Heating Maintenance">Heating Maintenance</option>
+                            <option value="Duct Work">Duct Work</option>
+                            <option value="Emergency Service">Emergency Service</option>
+                            <option value="Other">Other (specify in notes)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Service Address *</label>
+                        <input type="text" id="address" name="address" placeholder="Where do you need service?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Problem Description / Additional Notes</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Please describe the HVAC issue or any specific requests..."></textarea>
+                    </div>
+                </form>
+                <div class="navigation">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn" onclick="submitAppointment()" id="submit-btn">Book Appointment</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="step" id="step-4">
+                <div class="confirmation">
+                    <div class="check-icon">✓</div>
+                    <h2>Service Request Submitted!</h2>
+                    <p>Thank you for choosing us for your HVAC needs. We've received your service request and will contact you shortly to confirm the appointment and provide an accurate estimate.</p>
+                    <div class="selected-info">
+                        <h3>Your Service Request:</h3>
+                        <p><strong>Service:</strong> <span id="final-service"></span></p>
+                        <p><strong>Date:</strong> <span id="final-date"></span></p>
+                        <p><strong>Time:</strong> <span id="final-time"></span></p>
+                        <p><strong>Address:</strong> <span id="final-address"></span></p>
+                        <p><strong>Name:</strong> <span id="final-name"></span></p>
+                        <p><strong>Email:</strong> <span id="final-email"></span></p>
+                        <p><strong>Phone:</strong> <span id="final-phone"></span></p>
+                    </div>
+                    <button class="btn" onclick="resetForm()">Schedule Another Service</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedDate = null;
+        let selectedTime = null;
+        let appointmentData = {};
+
+        // Available time slots for HVAC services (customize these based on your schedule)
+        const timeSlots = [
+            "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+            "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"
+        ];
+
+        // Unavailable dates (customize based on your schedule)
+        const unavailableDates = [
+            // Add dates in YYYY-MM-DD format that should be disabled
+            // "2025-08-30", "2025-08-31"
+        ];
+
+        function generateCalendar() {
+            const calendar = document.getElementById('calendar');
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+
+            // Calendar headers
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            days.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-header';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+
+            // Generate next 30 days
+            for (let i = 0; i < 30; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                const dateString = date.toISOString().split('T')[0];
+                const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+                const isUnavailable = unavailableDates.includes(dateString);
+                
+                if (isWeekend || isUnavailable) {
+                    dayElement.className += ' disabled';
+                } else {
+                    dayElement.onclick = () => selectDate(date, dayElement);
+                }
+                
+                dayElement.innerHTML = `
+                    <div style="font-size: 0.9em; color: #666;">${date.toLocaleDateString('en', {month: 'short'})}</div>
+                    <div style="font-size: 1.2em; font-weight: bold;">${date.getDate()}</div>
+                `;
+                
+                calendar.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(date, element) {
+            // Remove previous selection
+            document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Select new date
+            element.classList.add('selected');
+            selectedDate = date;
+            
+            // Enable next button
+            document.getElementById('next-btn-1').disabled = false;
+            
+            // Update selected date display
+            document.getElementById('selected-date').textContent = date.toLocaleDateString('en', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function generateTimeSlots() {
+            const timeSlotsContainer = document.getElementById('time-slots');
+            timeSlotsContainer.innerHTML = '';
+            
+            timeSlots.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                slot.onclick = () => selectTime(time, slot);
+                timeSlotsContainer.appendChild(slot);
+            });
+        }
+
+        function selectTime(time, element) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Select new time
+            element.classList.add('selected');
+            selectedTime = time;
+            
+            // Enable next button
+            document.getElementById('next-btn-2').disabled = false;
+            
+            // Update confirmation displays
+            document.getElementById('confirm-date').textContent = selectedDate.toLocaleDateString('en', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('confirm-time').textContent = time;
+        }
+
+        function nextStep() {
+            if (currentStep === 1 && !selectedDate) return;
+            if (currentStep === 2 && !selectedTime) return;
+            
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`progress-${currentStep}`).classList.remove('active');
+            document.getElementById(`progress-${currentStep}`).classList.add('completed');
+            
+            currentStep++;
+            
+            // Show next step
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`progress-${currentStep}`).classList.add('active');
+            
+            // Generate time slots when moving to step 2
+            if (currentStep === 2) {
+                generateTimeSlots();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep === 1) return;
+            
+            // Hide current step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`progress-${currentStep}`).classList.remove('active');
+            
+            currentStep--;
+            
+            // Show previous step
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`progress-${currentStep}`).classList.remove('completed');
+            document.getElementById(`progress-${currentStep}`).classList.add('active');
+        }
+
+        function submitAppointment() {
+            const form = document.getElementById('contact-form');
+            const formData = new FormData(form);
+            
+            // Validate form
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Collect appointment data
+            appointmentData = {
+                date: selectedDate.toLocaleDateString('en', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                time: selectedTime,
+                serviceType: formData.get('service-type'),
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                message: formData.get('message') || 'No additional notes'
+            };
+            
+            // Disable submit button
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('submit-btn').textContent = 'Sending...';
+            
+            // Send email (using EmailJS - you'll need to set this up)
+            sendAppointmentEmail(appointmentData);
+        }
+
+        function sendAppointmentEmail(data) {
+            // EmailJS configuration for multiple recipients
+            const emailData = {
+                to_email: 'office@mechanicaltemp.com', // Primary email
+                cc_email: 'mthvacr@gmail.com', // Backup email
+                from_name: data.name,
+                from_email: data.email,
+                phone: data.phone,
+                service_type: data.serviceType,
+                service_address: data.address,
+                appointment_date: data.date,
+                appointment_time: data.time,
+                message: data.message,
+                subject: `🔧 New HVAC Service Request - ${data.serviceType} - ${data.date} at ${data.time}`
+            };
+            
+            // Send email notification
+            // Uncomment and configure this when you set up EmailJS:
+            /*
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', emailData)
+                .then(function(response) {
+                    console.log('Email sent successfully');
+                    sendSMSNotification(data); // Send SMS after email
+                }, function(error) {
+                    console.log('Email failed:', error);
+                    alert('Failed to send appointment request. Please try again.');
+                    document.getElementById('submit-btn').disabled = false;
+                    document.getElementById('submit-btn').textContent = 'Book Appointment';
+                });
+            */
+            
+            // For now, simulate email and SMS sending
+            console.log('Sending email to:', emailData.to_email, 'and', emailData.cc_email);
+            sendSMSNotification(data);
+        }
+
+        function sendSMSNotification(data) {
+            // SMS configuration using Twilio
+            const smsData = {
+                to: '+1234567890', // Replace with your phone number
+                message: `🔧 NEW HVAC SERVICE REQUEST\n\nService: ${data.serviceType}\nCustomer: ${data.name}\nPhone: ${data.phone}\nAddress: ${data.address}\n\nDate: ${data.date}\nTime: ${data.time}\n\nProblem: ${data.message}\n\nEmail: ${data.email}\n\nCall customer to confirm.`
+            };
+            
+            // Twilio API call (you'll need to set up a server endpoint for this)
+            // For security, SMS sending should be handled by your server, not client-side
+            
+            // Method 1: Server endpoint (recommended)
+            /*
+            fetch('/send-sms', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(smsData)
+            }).then(response => {
+                if (response.ok) {
+                    console.log('SMS sent successfully');
+                    showConfirmation();
+                } else {
+                    console.log('SMS failed');
+                    showConfirmation(); // Still show confirmation even if SMS fails
+                }
+            }).catch(error => {
+                console.log('SMS error:', error);
+                showConfirmation(); // Still show confirmation
+            });
+            */
+            
+            // Method 2: Twilio Functions (serverless)
+            /*
+            fetch('https://YOUR-ACCOUNT-SID.twil.io/YOUR-FUNCTION-PATH', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(smsData)
+            }).then(() => showConfirmation());
+            */
+            
+            // For now, simulate SMS sending
+            console.log('SMS would be sent to:', smsData.to);
+            console.log('SMS message:', smsData.message);
+            
+            setTimeout(() => {
+                showConfirmation();
+            }, 1500);
+        }
+
+        function showConfirmation() {
+            // Update final confirmation details
+            document.getElementById('final-service').textContent = appointmentData.serviceType;
+            document.getElementById('final-date').textContent = appointmentData.date;
+            document.getElementById('final-time').textContent = appointmentData.time;
+            document.getElementById('final-address').textContent = appointmentData.address;
+            document.getElementById('final-name').textContent = appointmentData.name;
+            document.getElementById('final-email').textContent = appointmentData.email;
+            document.getElementById('final-phone').textContent = appointmentData.phone;
+            
+            // Move to confirmation step
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`progress-${currentStep}`).classList.remove('active');
+            document.getElementById(`progress-${currentStep}`).classList.add('completed');
+            
+            currentStep = 4;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById(`progress-${currentStep}`).classList.add('active');
+        }
+
+        function resetForm() {
+            // Reset all variables
+            currentStep = 1;
+            selectedDate = null;
+            selectedTime = null;
+            appointmentData = {};
+            
+            // Reset form
+            document.getElementById('contact-form').reset();
+            
+            // Reset UI
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            
+            document.getElementById('step-1').classList.add('active');
+            document.getElementById('progress-1').classList.add('active');
+            
+            // Reset buttons
+            document.getElementById('next-btn-1').disabled = true;
+            document.getElementById('next-btn-2').disabled = true;
+            document.getElementById('submit-btn').disabled = false;
+            document.getElementById('submit-btn').textContent = 'Book Appointment';
+            
+            // Clear selections
+            document.querySelectorAll('.calendar-day.selected, .time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Regenerate calendar
+            document.getElementById('calendar').innerHTML = '';
+            generateCalendar();
+        }
+
+        // Initialize the calendar when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+        });
+    </script>
+
+    <!-- EmailJS SDK (uncomment when you set up EmailJS) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+</body>
+</html>
